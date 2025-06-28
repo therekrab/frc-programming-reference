@@ -1,0 +1,2 @@
+# ignore build/ directory from sphinx
+build
