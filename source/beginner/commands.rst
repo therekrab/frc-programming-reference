@@ -177,3 +177,26 @@ Then the default command must be registered with the subsystem with the followin
 
 That's it! The command will now run on the subsystem whenever there isn't
 another command who wants to.
+
+Where Commands live
+-------------------
+
+Commands that you subclass yourself (i.e. write ``initialize()``,
+``execute()``, ``isFinished()``, and ``end()``) should live in the
+``commands/`` directory of the code.
+
+This is what a simple (albeit poorly named) project may look like:
+
+.. code-block::
+
+   subsystems/
+   commands/
+     CommandA.java
+     CommandB.java
+   Main.java
+   Robot.java
+   RobotContainer.java
+   Constants.java
+
+.. note:: The contents of the ``subsystems/`` directory were omitted for
+   simpliticy.

@@ -39,17 +39,17 @@ Is this Coding?
 
 This is **not** a book to teach coding. This book teaches a subset of
 programming in FRC. **Coding** is the skill of understanding how to express
-ideas in code that compiles. **Programming** is the skill of knowing how to do
-so well, and in a way that allows for change later.
+ideas in code that compiles. **Programming** is the skill of knowing how to
+solve problems with code.
 
 Really, this (especially the **Advanced** section) is more a book about
 **design**, which focuses more in on the structure of code than the code
 itself. Design is a subset of programming that focuses solely on the
-architecture of the system. I don't care what language you use, or how many
-spaces you use for indentation.
+architecture of the system, ensuring code is easy to change, understand, and
+scale. 
 
-For this reason, this book will not include a lot of direct code examples.
-Sure, I'll include some code (probably Java) to demonstrate my ideas, but
+For this reason, this book will not include a lot of complete code examples.
+Sure, I'll include some code (Java) to demonstrate my ideas, but
 translating this book's ideas into code is left to you, the reader - and the
 programmer.
 
@@ -71,6 +71,9 @@ programmer.
    beginner/commands
    beginner/triggers
    beginner/constants
+   beginner/command_scheduler
+   beginner/robot
+   beginner/robot_container
 
 .. toctree::
    :hidden:
@@ -83,3 +86,4 @@ programmer.
    advanced/commands
    advanced/passive_subsystems
    advanced/enterable_states
+   advanced/logging

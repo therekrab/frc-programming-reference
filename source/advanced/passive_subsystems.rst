@@ -34,7 +34,7 @@ class, which extends ``SubsystemBase`` for easy use.
 
 .. code-block:: java
 
-   public abstract class PassiveSubsystem {
+   public abstract class PassiveSubsystem extends SubsystemBase { 
      private boolean m_taken;
 
      public PassiveSubsystem() {
