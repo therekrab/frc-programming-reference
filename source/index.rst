@@ -49,9 +49,8 @@ architecture of the system, ensuring code is easy to change, understand, and
 scale. 
 
 For this reason, this book will not include a lot of complete code examples.
-Sure, I'll include some code (Java) to demonstrate my ideas, but
-translating this book's ideas into code is left to you, the reader - and the
-programmer.
+Sure, I'll include some code (Java) to demonstrate my ideas, but translating
+this book's ideas into code is left to you, the reader - and the programmer.
 
 .. toctree::
    :hidden:

@@ -27,7 +27,7 @@ code, and ``final`` so that they can't be changed accidentally.
    private final OtherSubsystem m_otherSubsystem = new OtherSubsystem();
 
 This adheres to best-practices, by limiting scope on the subsystems as to avoid
-hard-to-follow logic as to who uses the subsystems. We explicity pass in
+hard-to-follow logic as to who uses the subsystems. We explicitly pass in
 subsystems to command constructors, so we know exactly who can (and who can't)
 write to these subsystems.
 
@@ -55,7 +55,7 @@ Here, controllers should be defined as private, final fields.
 
    private final CommandXboxController m_driveController = new CommandXboxController(/* button id */);
 
-Buttons can be accessed easily, and act as ``Triger``s (see :doc:`triggers`)
+Buttons can be accessed easily, and act as ``Trigger``s (see :doc:`triggers`)
 
 .. code-block:: java
 
