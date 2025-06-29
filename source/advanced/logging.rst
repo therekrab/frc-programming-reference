@@ -14,7 +14,7 @@ Device Inputs
 Anything that the robot reads from a sensor 100% *must* be logged. This is
 invaluable to diagnose issues in a match, or to catch a broken device.
 
-If the robot uses it to make a decision, *log it! This includes joystick inputs
+If the robot uses it to make a decision, *log it*! This includes joystick inputs
 and button presses.
 
 Device Status
