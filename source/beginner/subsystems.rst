@@ -68,6 +68,11 @@ ran every 20ms, by the Command Scheduler. This method is great for all sorts of
 passive behavior, such as logging system states, or other important things that
 need to happen "by default".
 
+.. note:: Often, I'll say that parts of code "read from" or "write to" a
+   subsystem. Reading to a subsystem means accessing data about the state of
+   the subsystem, such as ``subsystem.holdingPiece()``. "Writing to" a subsystem means
+   telling it to do something, such as ``setReference()``.
+
 What makes a good subsystem?
 ----------------------------
 
@@ -118,6 +123,12 @@ Subsystem best practices
    set state should either set a reference state (and not reach it) or, for a
    more complex option, these methods could instead return Commands that, when
    ran, drive the subsystem to that state.
+
+4. A subsystem shouldn't ever have access to another subsystem. If you want to
+   read from a subsystem to see what a different subsystem should do, use a
+   more restrictire approach of dependency injection. Instead of taking in the
+   other subsystem directly, provide a method to do the thing that accepts the
+   actual input you want.
 
 Examples
 ~~~~~~~~
@@ -176,7 +187,55 @@ me to stop intaking a piece, even if I already started. I'll call it
 **Yes**. This is because ``stop()`` makes it clear what we'll do, but it
 doesn't make any sort of promise as to how we will achieve "stopping". This is good.
 
-.. note:: Often, I'll say that parts of code "read from" or "write to" a
-   subsystem. Reading to a subsystem means accessing data about the state of
-   the subsystem, such as ``subsystem.holdingPiece()``. "Writing to" a subsystem means
-   telling it to do something, such as ``setReference()``.
+Now I've also got a ``Shooter`` class, and I want to put logic in the shooter
+to shoot a gamepiece. But I don't want to run the motor if I don't even have a
+gamepiece in my intake.
+
+If I pass the ``Intake`` object into the constructor of the ``Shooter`` (such
+as ``new Shooter(intake)``), and I read from the intake subsystem to determine
+if I have a piece, am I following best practices?
+
+I am **not**. This is because this gives the ``Shooter`` class *too much
+trust*. If we aren't going to ever write to the intake subsystem, why should we
+have complete access to do whatever we want to it? This introduces the
+possibility of accidentally writing code that affects the behavior of the
+intake from the ``Shooter`` class. This is bad.
+
+Instead of a method called ``shoot()`` which relies on the internal ``Intake``
+object, we could instead pass into ``shoot()`` *only what we need*.
+
+.. code-block:: java
+
+   public void shoot(boolean holdingObject) {
+     if (holdingObject) {
+       /* code to shoot */
+     } else {
+       /* code to stop motors */
+     }
+   }
+
+This does two things for us. Firstly, we don't need to worry about the
+``Shooter`` class ever messing something up with ``Intake``. Secondly, it lets
+us test specific features of the ``Shooter`` class without worrying about if
+the ``Intake`` class works.
+
+Consider a case where we used the first approach (internal ``Intake`` in
+``Shooter``). But a bug arises: the shooter doesn't shoot when we have a piece.
+
+Is this a bug with the intake, or is it a problem with the shooter logic? We
+could add logging to see what the intake's method reports, and walk through the
+logic ourselves, but it would be a lot easier if we could split the
+functionality between the intake and the shooter to isolate only one for
+testing.
+
+With dependency injection like we did with the ``shoot()`` method that accepts
+a boolean, we can just create a test command that calls ``shoot(true)``. If
+this works, we know that the input to the method is bad.
+
+If this fails, we know the problem lies within the ``shoot()`` method itself.
+We can then even use our test method to keep running the shooter, even if we
+don't actually have a piece, until we get the expected behavior.
+
+.. note:: With more advanced programming, we could even write unit tests to
+   verify on compile that the ``shoot()`` method does what we expect.
+   Dependency injection is very powerful for this reason.

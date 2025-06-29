@@ -70,6 +70,7 @@ programmer.
    beginner/subsystems
    beginner/commands
    beginner/triggers
+   beginner/constants
 
 .. toctree::
    :hidden:
@@ -78,4 +79,7 @@ programmer.
 
    advanced/index
    advanced/subsystems
+   advanced/subsystem_states
    advanced/commands
+   advanced/passive_subsystems
+   advanced/enterable_states
