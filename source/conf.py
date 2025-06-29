@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Programming Reference'
+project = 'The Programming Reference Book'
 copyright = '2025, Nolan Barker'
 author = 'Nolan Barker'
 
@@ -24,5 +24,6 @@ exclude_patterns = []
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'sphinxawesome_theme'
+html_title = project
 html_permalinks_icon = '<span>#</span>'
 html_static_path = ['_static']
