@@ -58,7 +58,7 @@ Check out this example for a demonstration.
    }
 
 This is awful. Imagine having to add a third step - or run two steps in
-parallel, making sure both finish before anotother starts. We want to write a
+parallel, making sure both finish before another starts. We want to write a
 really simple command that does three things:
 
 1. Runs the subsystem's ``executeFirstThing()`` method until the subsystem is
@@ -69,7 +69,7 @@ really simple command that does three things:
 
 This is really quite simple, and should *never* be expressed so verbosely. By
 moving the responsibility to construct the subsystem-specific commands to the
-subsystems themselves (see :doc:`advanced/subsystems`), we arrive at a much
+subsystems themselves (see :doc:`subsystems`), we arrive at a much
 friendlier solution:
 
 .. code-block:: java
@@ -95,3 +95,49 @@ add more commands, or run a smaller group in parallel:
    );
 
 Imagine implementing this logic in the first style.
+
+Naming Commands
+---------------
+
+The class ``CommandScheduler`` can be displayed on SmartDashboard (or Elastic,
+which I recommend):
+
+.. code-block:: java
+
+   SmartDashboard.putData("Command scheduler", CommandScheduler.getInstance());
+
+This displays all currently running commands.
+
+The ``Subsystem`` type also has this ability:
+
+.. code-block:: java
+
+   SmartDashboard.putData("Some subsystem", someSubsystem);
+
+This displays the default command for the subsystem as well as the currently
+active command.
+
+This is very useful, because it lets us see what commands are running at any
+given point. However, it becomes quickly apparent that because we define *all*
+commands using the inline style (with command decorators),  the commands have
+no reasonable name on the dashboard. And why should they? At this point, we're
+just using ``run()``\s and ``runOnce()``\s.
+
+But, there exists a command decorator that, it seems, is not known by many but
+can make your life much easier: the ``.withName()`` method on commands gives
+them a customizable name.
+
+.. code-block:: java
+
+   Command namedCommand = regularCommand.withName("More Specific Name");
+
+These make it more obvious as to what command(s) are currently running. We'll
+implement this automatically on all commands in the section
+:doc:`enterable_states`.
+
+Proxy commands
+--------------
+
+.. danger:: Proxy commands, if used incorrectly, are able to not only cancel
+   themselves, but also the group they run in.
+

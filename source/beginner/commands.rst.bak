@@ -1,0 +1,122 @@
+Commands
+========
+
+Command-based code
+------------------
+
+Robots, are you are probably aware, can do things. But how do we express these
+actions in code?
+
+The solution that WPILib provides is by using **Commands**. Directly from the
+WPILib docs:
+
+  Commands represent actions the robot can take. Commands run when scheduled,
+  until they are interrupted or their end condition is met.
+
+That's a lot to unpack. Let's go through this.
+
+  Commands represent actions the robot can take
+
+A command is an instance of a class. The class has methods such as
+``initialize()``, ``execute()``, ``end()``, and ``isFinished()`` that provide
+control over its behavior. These methods are called by the Command Scheduler
+depending on the state of the command (if it's just starting, it'll call
+``initialize()``. When it ends, ``end()``). Modifying these methods changes the
+behavior of a command.
+
+.. note:: The return value of ``isFinished()`` is a boolean. The method
+   ``end()`` accepts a boolean. The meaning of these will be explained later in
+   this page, but know that those are the only two inputs/outputs to these
+   methods.
+
+The ``execute()`` method is run every cycle, whereas ``initialize()`` and
+``end()`` are only ran once, at the beginning and end of the command,
+respectively.
+
+  Commands run when scheduled
+
+The Command Scheduler doesn't run your command until you tell it to. This could
+be caused by a button being clicked, or a change in the robot's state. But the
+Command Scheduler doesn't just run your command when you instantiate it.
+*Commands must be bound to a trigger, or scheduler manually with*
+``schedule()``. 
+
+.. warning:: It's highly unlikely you'll ever need to call ``.schedule``
+   yourself. If you do, ask yourself if what you're doing is the best
+   implemented like whatever you're doing. It's probably not.
+
+Triggers will be discussed in much more detail in another
+article; they are incredibly powerful.
+
+
+  until they are interrupted
+
+Commands can be interrupted. One common way to interrupt a command is to
+disable the robot through the DriverStation. There are other ways to interrupt
+commands, but those will be covered in later sections. For now, just understand
+that your command *can* be effectively killed, and it will not run anymore. The
+only thing that happens when a command is killed is its ``end()`` method is
+called with a value of ``true`` passed into it to indicate that yes, it was
+cancelled and didn't finish regularly. Once a command is interrupted, it will
+have to be rescheduled by the Command Scheduler to start up again. Even if the
+robot is disabled, then re-enabled, the command will not restart.
+
+  or their end condition is met.
+
+Some, if not most, robot actions can be classified as "done". For example, a
+command to raise an elevator to a certain point doesn't keep running forever.
+The command should stop when the elevator is at the right position. This is
+where ``isFinished()`` comes into play.
+
+Every time that the Command Scheduler runs your command (either
+``initialize()`` or ``execute()``), it then checks the value of
+``isFinished()``. If that method returns ``true``, then your command is over.
+Just like when it's interrupted, it will not continue until rescheduled. Like
+when a command is interrupted, ``end()`` is called. However, the parameter to
+end is ``false`` instead of ``true``. This is because the command wasn't
+interrupted. Instead, it ended by its own accord.
+
+.. note:: Even though it has to be specified as a parameter, it's a common use
+   case not to use the boolean passed into ``end()``.
+
+The ``Command`` class
+---------------------
+
+WPILib provides an abstract class ``Command`` along with their dependency
+``NewCommands``. This provides a lot of default behavior for the commands that
+we don't need to implement ourselves - it's always the same thing.
+
+Command requirements
+-----------------------
+
+Default commands
+----------------
+
+Where commands live
+-------------------
+
+Commands that you subclass yourself (i.e. write ``initialize()``,
+``execute()``, ``isFinished()``, and ``end()``) should live in the
+``commands/`` directory of the code.
+
+This is what a simple (albeit poorly named) project may look like:
+
+.. code-block::
+
+   subsystems/
+   commands/
+     CommandA.java
+     CommandB.java
+   Main.java
+   Robot.java
+   RobotContainer.java
+   Constants.java
+
+.. note:: The contents of the ``subsystems/`` directory were omitted for
+   simpliticy.
+
+.. tip:: There are many more features of the ``Command`` class that are
+   important to be familiar with. Read `this page
+   <https://docs.wpilib.org/en/stable/docs/software/commandbased/commands.html>`_
+   of the docs for more information on commands.
+

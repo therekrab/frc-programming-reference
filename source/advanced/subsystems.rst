@@ -207,7 +207,7 @@ reads nicer.
 It could be said that methods like ``goHere()`` and ``goThere()`` always return
 the same command, and that command is always valid, so it would be possible to
 replace that method with a ``public final`` field, like we did for the
-``Trigger``s from earlier.
+``Trigger``\s from earlier.
 
 However, this doesn't work as well. Firstly, if we use the command in a
 composition at one point, it cannot be used later in a different composition.

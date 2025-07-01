@@ -136,3 +136,6 @@ For example, we can have a group of related states all together in the same file
 
 Here, we define three states. Although they don't *have* to be related, it
 helps to organize code like this.
+
+Proxying commands from ``enter()``
+----------------------------------

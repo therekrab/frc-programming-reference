@@ -5,6 +5,10 @@ The **passive subsystem** is an extension of the regular subsystem. It has all
 the same features, but it has a default command that is prebuilt off of a
 method called ``passive()``, which the user must implement.
 
+.. note:: The passive subsystem code is not included with WPILib. You must
+   program it yourself to have its capabilities. This is one of a few helper
+   classes that I recommend writing to help structure robot code.
+
 PassiveSubsystems give more control over *when* a default command can run,
 through the use of a few methods:
 
