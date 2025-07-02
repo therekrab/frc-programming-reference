@@ -324,6 +324,30 @@ method(s) you use.
 Default commands
 ----------------
 
+When a command ends (for whatever reason; interrupted or not), it doesn't
+restart automatically. But this sort of behavior can be helpful, on a subsystem
+specific level.
+
+The command scheduler allows each subsystem to have one or zero **default
+commands**. A default command is a command that will run on a subsystem
+whenever no other command has requirements on the subsystem.
+
+Default commands should never end (i.e. ``isFinished()`` should always return
+false), because if the command ends this way, it will just be rescheduled.
+Having a command that *seems* like it could end, but then is just restarted,
+doesn't follow the principle of "least surprise". For this reason, design
+default commands to have no explicit end condition.
+
+Default commands are interrupted whenever any other command takes requirements
+of the subsystem, but they are restarted once the subsystem no longer has any
+commands that require it.
+
+Default commands are very powerful, but they do have some limitations.
+
+.. admonition:: Use case
+
+   Some text here.
+
 Command compositions
 --------------------
 

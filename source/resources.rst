@@ -4,8 +4,8 @@ Additional Resources
 There are a variety of supplemental resources that I've found helpful when
 writing code for FRC.
 
-Learning to code
-----------------
+Learning to code (non-FRC)
+--------------------------
 
 If you're not sure where to begin learing how to code, I'd highly recommend
 giving `Codecademy <https://www.codecademy.com/>`_ a try. I've used it to learn
@@ -15,14 +15,16 @@ from the free courses.
 
 A good coding reference is also `W3 Schools <https://www.w3schools.com/>`_.
 
-.. warning:: In case it wasn't clear, *the above resources will not teach you
-   anything about FRC coding, or WPILib*. However, it's still crucial to
-   understand how to convey your ideas into code, regardless of what you're
-   trying to write. An understanding of a language is irreplaceable in any form
-   of coding.
+Use these resources to familiarize yourself with the language you'll be writing
+code in. You'll develop a better understanding of the language's syntax and its
+quirks. Such understanding is fundamental to comprehending this book as well.
 
 WPILib Documentation
 --------------------
+
+.. tip:: You should read through the WPILib documentation before beginning this
+   book. I reintroduce some of the same concepts, but the docs (and the APIs)
+   are actually what teach you what you can do with the code.
 
 WPILib is a massive library of prewritten code that helps tremendously when
 dealing with robots in FRC. It is essential to have a good grasp on what the

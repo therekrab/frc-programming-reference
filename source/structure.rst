@@ -1,6 +1,13 @@
 Structure of this book
 ======================
 
+.. important:: Often, I reference classes or methods in WPILib without much
+   explanation that may not be well-known to introductory programmers. This is
+   because these functions and methods are already very well documented, either
+   with the `WPILib docs <https://docs.wpilib.org>`_ or with the code-specific
+   API. This is meant to introduce beginners to important concepts, but is
+   *not* a replacement for simply reading the docs.
+
 This book is *designed* to be a reference book for programming in FRC. Mainly,
 I want to write about good design, but this comes after the necessary
 introduction to regular programming in FRC.

@@ -52,6 +52,12 @@ For this reason, this book will not include a lot of complete code examples.
 Sure, I'll include some code (Java) to demonstrate my ideas, but translating
 this book's ideas into code is left to you, the reader - and the programmer.
 
+In fact, this book will often reference classes, methods, etc. from WPILib
+without explaining such things in detail. This is because you should have
+already read the `WPILib docs <https://docs.wpilib.org>`_ before starting this
+book. I offer a quick review of the major learnings from that book, but I will
+not repeat what the docs have to say. **Read the docs!!**
+ 
 .. toctree::
    :hidden:
    :maxdepth: 2
