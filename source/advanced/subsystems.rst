@@ -222,9 +222,10 @@ On ``periodic()``
 
 The ``periodic()`` method on subsystems *always* runs, even when a command is
 currently using the subsystem. For this reason, and to avoid undefined or
-unexpected behavior, **never perform writes in a subsystem's** ``periodic()``.
+unexpected behavior, *never perform writes in a subsystem's* ``periodic()``.
 
-If you need a subsystem to perform an action passively, use a default command.
+If you need a subsystem to perform an action passively, use a default command
+instead.
 
 The ``periodic()`` method should only be used for updating inputs to a
 subsystem, logging values, etc. *Never* put code in this method that could

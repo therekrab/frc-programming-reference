@@ -39,14 +39,13 @@ a method to reach each valid state.
 
 This code is pretty verbose, and due to the different method names, we have to
 write different code later (because of the different method names) to reach
-different setpoints.
+different setpoints. We can't just pass some input through to the subsystem
+like we could when we had a numeric parameter.
 
 We're also seeing a lot of repetition of code *that does the same thing*.
 
-I will propose my favorite solution for solving this problem.
-
-We could declare a constant enum ``ElevatorState`` that has the following
-variants (using the 2025 game as an example):
+Instead, we could declare a constant enum ``ElevatorState`` that has the
+following variants (using the 2025 game as an example):
 
 .. code-block:: java
 
@@ -64,7 +63,7 @@ variants (using the 2025 game as an example):
 
 This provides an easy-to-use (and much less error-prone) interface for
 communicating with the elevator. We just call
-``elevator.setRererence(ElevatorState.Net)`` externally to set a reference.
+``elevator.setReference(ElevatorState.Net)`` externally to set a reference.
 Clean, simple, and most importantly, it eliminates the possibility of an
 invalid reference at runtime.
 

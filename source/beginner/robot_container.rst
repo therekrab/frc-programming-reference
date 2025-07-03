@@ -55,7 +55,7 @@ Here, controllers should be defined as private, final fields.
 
    private final CommandXboxController m_driveController = new CommandXboxController(/* button id */);
 
-Buttons can be accessed easily, and act as ``Trigger``s (see :doc:`triggers`)
+Buttons can be accessed easily, and act as ``Trigger``\s (see :doc:`triggers`)
 
 .. code-block:: java
 
