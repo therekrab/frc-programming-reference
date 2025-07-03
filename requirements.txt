@@ -5,6 +5,7 @@ beautifulsoup4==4.13.4
 certifi==2025.6.15
 charset-normalizer==3.4.2
 click==8.2.1
+codespell==2.4.1
 colorama==0.4.6
 docutils==0.21.2
 h11==0.16.0
