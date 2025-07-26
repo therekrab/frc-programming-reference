@@ -8,21 +8,22 @@ Learning to code
 
 There are already too many resources to learn how to code on the internet
 today; therefore, such content will not be taught directly in this book.
-Instead, it's recommended to use `Codecademy INVALID LINK
-<https://example.com>`_ to learn Java.
+Instead, it's recommended to use `Codecademy <https://codecademy.com>`_ to
+learn Java.
 
 Codecademy is a *great* place to learn how to write Java code. To simplify
 things further, we can use our GitHub account to sign in to Codecademy as well.
 
 Here's the steps to get started:
 
-1. Navigate to `INVALID LINK <https://example.com>`_ and select "Sign up".
+1. Navigate to `Codecademy's sign up page
+   <https://www.codecademy.com/register>`_.
 
 2. Sign in through GitHub. If you don't have a GitHub account, then read the
    section on GitHub later in this page.
 
-3. Go to `this page (INVALID LINK) <https://example.com>`_. This is the course
-   that teaches enough Java to get started.
+3. Go to `this page <https://www.codecademy.com/learn/learn-java>`_. This is
+   the course that teaches enough Java to get started.
 
 4. Start learning!
 
@@ -46,7 +47,7 @@ Git
 Git is a version control system (covered in :doc:`git/1_2_what_is_git`) that we
 use to manage the growing structure and history of our project.
 
-You can find the installation page `here <https://git-scm.com/downloads>`_.
+Navigate to the `Git installation page <https://git-scm.com/downloads>`_.
 Select your OS, and continue to the OS-specific download steps.
 
 WPILib + VS Code
@@ -62,7 +63,8 @@ it to the robot.
 
 You can find the latest releases `here
 <https://github.com/wpilibsuite/allwpilib/releases/latest>`_. Scroll down to
-the **Downloads** section, and select your operating system. Read `this page
+the **Downloads** section, and select your operating system. Read `this part of
+the docs
 <https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/wpilib-setup.html>`_
 of the WPILib docs to guide you through what to select if you're unsure. This
 page tells you what buttons to press for each step along the way.
@@ -82,7 +84,7 @@ Creating a new account
 
 .. note:: If you've already got a GitHub account, you can skip this step.
 
-To create a new account, go `here <https://github.com/signup>`_. Enter your
+To create a new account, go to the `GitHub signup page <https://github.com/signup>`_. Enter your
 information and follow the steps to configure your account.
 
 .. admonition:: Which email to use?

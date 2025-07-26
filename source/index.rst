@@ -17,18 +17,22 @@ and contains many pages with more specific content.
 
 .. toctree::
    :hidden:
-   :maxdepth: 1
    :caption: Contents
 
    why_learn_programming
    get_started
+   glossary
 
 .. toctree::
    :hidden:
-   :maxdepth: 1
+   :glob:
    :caption: 1 - Git & Version Control
 
-   git/1_1_version_control
-   git/1_2_what_is_git
-   git/1_3_github
-   git/1_4_merges
+   git/*
+
+.. toctree::
+   :hidden:
+   :glob:
+   :caption: 2 - Intro to FRC Programming
+
+   intro_frc/*
