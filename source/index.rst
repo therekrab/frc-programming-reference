@@ -35,4 +35,9 @@ and contains many pages with more specific content.
    :glob:
    :caption: 2 - Intro to FRC Programming
 
-   intro_frc/*
+   intro_frc/2_1*
+   intro_frc/2_2*
+   intro_frc/2_3*
+   intro_frc/commands/index.rst
+   intro_frc/2_5*
+

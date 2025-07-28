@@ -28,7 +28,6 @@ extensions = [
 hoverxref_roles = ["term"]
 hoverxref_role_types = {"term": "tooltip"}
 
-
 templates_path = ['_templates']
 exclude_patterns = []
 

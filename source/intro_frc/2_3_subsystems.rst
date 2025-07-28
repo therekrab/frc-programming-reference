@@ -41,9 +41,9 @@ and jelly sandwich.
 on the *how* than the *why*. For example, "Spread peanut butter on one side of
 a loaf of bread. Then spread jelly on one side of a separate slice of bread.
 Then touch the two slices together such that the peanut butter and jelly are
-touching" is an imperative command.
+touching" is an :term:`imperative` command.
 
-The main problem with imperative programming is that it distracts us from what
+The main problem with :term:`imperative` programming is that it distracts us from what
 we're actually doing. Programming is an art of encoding real-world behavior
 into code. If possible, I'd prefer to focus on *what* I'm doing and what the
 goal is here (make a meal) versus *how* exactly I'm going about such a task.
@@ -99,11 +99,11 @@ the subsystem. No code outside of the subsystem needs to know about the actual
 hardware that the subsystem uses - instead, it only cares about what the
 subsystem *as a whole* can do.
 
-Finally, this is a much more declarative style of programming. Although we do
-have to be imperative when we program the inner workings of the subsystem, it
-becomes easier to deal with *externally* (outside of that class). Declarative
-programming is more flexible, because it separates *what* is being done from
-*how* it is happening.
+Finally, this is a much more :term:`declarative` style of programming. Although
+we do have to be :term:`imperative` when we program the inner workings of the
+subsystem, it becomes easier to deal with *externally* (outside of that class).
+Declarative programming is more flexible, because it separates *what* is being
+done from *how* it is happening.
 
 How to create a subsystem
 -------------------------
