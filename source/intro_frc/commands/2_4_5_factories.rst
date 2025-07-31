@@ -65,6 +65,13 @@ The factory ``Commands.waitUntil(BooleanSupplier condition)`` is a particularly
 helpful factory because it creates a command that polls the condition each
 cycle and only ends when the condition is ``true``.
 
+``either()``
+~~~~~~~~~~~~
+
+The factory ``Commands.either(Command onTrue, Command onFalse, BooleanSupplier
+selector)`` can be used to run one of two commands depending on the value of a
+given condition, evaluated at runtime.
+
 Commands with requirements
 --------------------------
 
@@ -74,11 +81,15 @@ that we generate from factories.
 
 There are two ways to do this.
 
+.. tip:: Refer to the documentation for this section; not all factories are the
+   exact same. This is just a general guide.
+
 Manually passing in subsystems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In any of the above factories (except ``Commands.none()``), we can also pass
-subsystems into the factories to make those commands require those subsystems.
+In any of the above factories that don't take in commands themselves (except
+``Commands.none()``), we can also pass subsystems into the factories to make
+those commands require those subsystems.
 
 .. note:: The reason that this doesn't work with ``Commands.none()`` is because
    that command does *nothing* and ends instantly.
@@ -114,8 +125,9 @@ Using the ``SubsystemBase`` class
 In cases where the factory would normally only have requirements on exactly
 *one* subsystem, there's a handy way to create those commands. The
 ``SubsystemBase`` class (which subsystems inherit from) comes with the *exact
-same* factories (except ``Commands.none()``) but with one difference: the
-commands automatically hold requirements on the subsystem.
+same* factories (except ``Commands.none()`` and the factories that accept
+commands) but with one difference: the commands automatically hold requirements
+on the subsystem.
 
 So, the following two commands are equivalent:
 

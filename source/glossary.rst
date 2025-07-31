@@ -60,3 +60,13 @@ Glossary
 
       You can bind commands to button presses, bind commands to changes in
       robot state, or to any arbitrary trigger.
+
+   client
+
+      When we're programming something that can be used somewhere else (e.g.
+      subsystems, or any class besides ``Main``), we refer to the client as the
+      part of the code that uses our code. From different viewpoints, clients
+      can be different. For example, a subsystem's clients are parts of code
+      that use that subsystem's published functionality. However, from the
+      perspective of a vision/localization tool, anywhere in code where that
+      class is used is now the client.

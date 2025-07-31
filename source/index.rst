@@ -40,4 +40,14 @@ and contains many pages with more specific content.
    intro_frc/2_3*
    intro_frc/commands/index.rst
    intro_frc/2_5*
+   intro_frc/2_6*
 
+.. toctree::
+   :hidden:
+   :glob:
+   :caption: 3 - Advanced FRC Programming
+
+   advanced/3_0*
+   advanced/structure/index.rst
+   advanced/3_2*
+   advanced/3_3*
