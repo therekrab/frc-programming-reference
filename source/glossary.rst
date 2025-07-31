@@ -70,3 +70,9 @@ Glossary
       that use that subsystem's published functionality. However, from the
       perspective of a vision/localization tool, anywhere in code where that
       class is used is now the client.
+
+   PV
+   
+      PhotonVision is vision software for FRC robots. It can track gamepieces,
+      colored blobs, or use April Tags on the field to determine an estimated
+      robot position.

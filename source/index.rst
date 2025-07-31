@@ -51,3 +51,4 @@ and contains many pages with more specific content.
    advanced/structure/index.rst
    advanced/3_2*
    advanced/3_3*
+   advanced/3_4*

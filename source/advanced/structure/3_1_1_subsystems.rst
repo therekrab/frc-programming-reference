@@ -222,10 +222,10 @@ implements. Here's what the interface may look like in code:
    :caption: IntakeIO.java
 
    public interface IntakeIO {
-     public void setRollerVoltage(double voltage);
-     public void setPivotPosition(double position);
+     void setRollerVoltage(double voltage);
+     void setPivotPosition(double position);
 
-     public void updateInputs(IntakeIOInputs inputs);
+     void updateInputs(IntakeIOInputs inputs);
    }
 
 Now, instead of storing the io layer as ``IntakeIOHardware``, we can simply

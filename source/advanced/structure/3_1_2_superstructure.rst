@@ -85,7 +85,7 @@ We can create an interface like this for ``ES`` (enterable states):
    :caption: ES.java
 
    public interface ES {
-     public Command build(Subsystems subsystems);
+     Command build(Subsystems subsystems);
    }
 
 Now we have a special interface that promsises to have a ``build()`` method

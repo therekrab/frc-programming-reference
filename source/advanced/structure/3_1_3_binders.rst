@@ -15,7 +15,7 @@ Let's consider a ``Binder`` interface:
    :caption: Binder.java
 
    public interface Binder {
-     public void bind(Superstructure superstructure);
+     void bind(Superstructure superstructure);
    }
 
 This declares a simple interface that ensures a method ``bind()`` which accepts
@@ -91,3 +91,4 @@ tied to one single other action. It actually is a great design pattern to have
 this style of binding - when the robot enters a state in which an action is
 ready, that action occurs automatically. This makes it very easy to add more
 automation to a robot without much code clutter.
+
