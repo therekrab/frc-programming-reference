@@ -69,6 +69,7 @@ face the fact that they need to know the units of this data before they can
 process it makes sure that we don't get any weird errors here.
 
 .. toctree::
+   :titlesonly:
    :glob:
 
    *
