@@ -76,3 +76,9 @@ Glossary
       PhotonVision is vision software for FRC robots. It can track gamepieces,
       colored blobs, or use April Tags on the field to determine an estimated
       robot position.
+
+   bandaid code
+
+      Bandaid code is code that is intended to solve a problem in a temporary
+      manner. It may limit functionality, or be generally "bad code" - i.e. is
+      hard to update or change without significant refactoring.
