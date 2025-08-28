@@ -82,3 +82,15 @@ Glossary
       Bandaid code is code that is intended to solve a problem in a temporary
       manner. It may limit functionality, or be generally "bad code" - i.e. is
       hard to update or change without significant refactoring.
+
+   GIGO
+
+      A useful principle in computer science is GIGO, or "Garbage In, Garbage
+      Out". This suggests that if we feed invalid inputs to a software
+      component, the output from that component cannot be any more correct than
+      the data that it was given. If you feed a system garbage, it will process
+      the bad data, returning an invalid result - whether the system *always*
+      spits out garbage is unknown (the system could be fundamentally broken
+      too), but if we know the input to the system was invalid, we can't say
+      that the component itself is broken, because bad data as an input nearly
+      guarantees an invalid output.

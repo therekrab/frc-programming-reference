@@ -5,7 +5,7 @@ Any sort of code that misbehaves compared to its expected behavior is
 considered "buggy". There are a few things that can lead to buggy code, which
 are outlined in this document. Avoid any of these situations if you can.
 
-These issues fall into three main groups:
+These issues fall into four main groups:
 
 1. Lack of understanding/information
 
@@ -58,8 +58,8 @@ taken:
      - Although accounting for each possible way that each way the robot can
        fail is difficult, it becomes easier with practice. Especially as the
        robot practices, the robot's actions need to be carefully analyzed and
-       *anything* out of the ordinary thoroughly, because failure to do so
-       often results in unexpected behavior later.
+       *anything* out of the ordinary thoroughly examined, because failure to
+       do so often results in unexpected behavior later.
  
 Physical failures
 -----------------
@@ -85,9 +85,9 @@ for longer than it should. As a general rule, if programmers want to blame the
 physical hardware on the robot, there *must* be evidence that the mechanism is
 at fault. This could be log data (if you assume that the logging system is
 accurate), or data from some other source (live updates via NT or a visual
-proof that the mechanism is disconnected. If you cannot prove that is was
-hardware, you may assume it was while you also ensure that code is functioning
-as expected. We'll discuss methods to verify the functionality of code in later
+proof that the mechanism is disconnected). If you cannot prove that is was a
+hardware failure, it's a good idea to ensure that the code is functioning as
+expected. We'll discuss methods to verify the functionality of code in later
 parts of this section.
 
 Simple logical errors
@@ -100,7 +100,8 @@ they're difficult to understand, but because they're difficult to spot by the
 programmer who wrote the code originally.
 
 To avoid these sorts of errors, it's important to review your code consistently
-in order to verify that it is void of these simple mistakes. However, to err is to be 
+in order to verify that it is void of these simple mistakes. Working with
+others' reviews is also a good idea.
 
 Unanticipated coupling
 ----------------------
