@@ -53,3 +53,10 @@ and contains many pages with more specific content.
    advanced/3_3*
    advanced/3_4*
    advanced/debugging/index.rst
+
+.. toctree::
+   :hidden:
+   :glob:
+   :caption: 4 - Programming Writeups
+
+   writeups/index.rst

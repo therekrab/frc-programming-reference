@@ -21,3 +21,11 @@ through the logic with somebody else does a few things:
 
 3. The other person may see something you missed yourself, which helps solve
    the problem.
+
+Correcting the problem
+----------------------
+
+Once the issue is found, and a select portion of code can be pointed to for its
+issue, solving the problem is much more trivial. Simply write the code that
+should have existed, and test it. It's hard to overexaggerate how much testing
+can help catch issues in your code soon.
