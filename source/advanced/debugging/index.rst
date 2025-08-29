@@ -1,5 +1,5 @@
-Debugging
-=========
+3.5 - Debugging
+===============
 
 Sometimes code doesn't run the way it should. Sometimes hardware behaves
 unexpectedly. These are facts of life for programming students. It's important

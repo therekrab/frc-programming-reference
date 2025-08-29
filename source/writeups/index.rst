@@ -1,5 +1,5 @@
-4 - Software Writeups
-=====================
+4 - Writeups
+============
 
 This section is different from the other sections in this book; instead of
 teaching general programming knowledge, this section contains writeups for many
