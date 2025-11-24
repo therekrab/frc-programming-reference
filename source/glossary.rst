@@ -94,3 +94,26 @@ Glossary
       too), but if we know the input to the system was invalid, we can't say
       that the component itself is broken, because bad data as an input nearly
       guarantees an invalid output.
+
+   matrix state
+
+      The method of categorizing state as a collection of different, unrelated
+      smaller options. Ex: a boolean toggle for ``elevatorUp``, an enum value for
+      ``pieceStatus``, and another boolean for ``drivetrainMoving``. Each of these
+      values is independent of the other, and they are independent.
+
+   encapsulation
+
+      From `Wikipedia
+      <https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)>`_:
+
+        **encapsulation** refers to the bundling of data with the mechanisms or
+        methods that operate on the data. It may also refer to the limiting of
+        direct access to some of that data, such as an object's components.
+        Essentially, encapsulation prevents external code from being concerned
+        with the internal workings of an object.
+
+      Following the principles of encapsulation is generally considered good
+      practice, because it makes sure that client code doesn't have to worry
+      about implementation details or constants that only pertain to the
+      business logic.

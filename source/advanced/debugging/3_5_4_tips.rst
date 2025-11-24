@@ -49,3 +49,10 @@ code.
     code`, but avoid these urges unless absolutely necessary. Often, taking the
     additional time to write the *correct* solution ensures no adverse
     side-effects occur.
+
+13. Understand that assumptions are the *only* thing that can get in the way
+    between expected behavior and actual behavior. Thus, verify all your
+    assumptions - when you turn assumptions about reality into either *true* or
+    *false* realities, you *ensure* that you can logically follow the robot's
+    path of operation until you find where the actual behavior diverges from
+    the expected behavior.
