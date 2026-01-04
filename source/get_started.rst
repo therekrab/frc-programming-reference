@@ -8,8 +8,8 @@ Learning to code
 
 There are already too many resources to learn how to code on the internet
 today; therefore, such content will not be taught directly in this book.
-Instead, it's recommended to use `Codecademy <https://codecademy.com>`_ to
-learn Java.
+Instead, I'd recommended to use `Codecademy <https://codecademy.com>`_ to learn
+Java.
 
 Codecademy is a *great* place to learn how to write Java code. To simplify
 things further, we can use our GitHub account to sign in to Codecademy as well.

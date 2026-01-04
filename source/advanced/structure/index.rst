@@ -30,8 +30,8 @@ Oftentimes, it's very much impossible to fully have a zero-trust relationship
 with the client. So we have to turn to the next best option: making a system
 such that the client would have to *actively* try to mess someting up.
 
-Document with types, not comments
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Enfore rules with types, not comments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In code, when we expose features to the client, we are inherently making a
 *promise* with the client that we will do what we say we will do. This goes the
@@ -67,6 +67,12 @@ to use that value as a value with units of milliseconds. Although they still
 *can* misuse our code, that's really on them, not us. Forcing the client to
 face the fact that they need to know the units of this data before they can
 process it makes sure that we don't get any weird errors here.
+
+Generally, we want to use the fact that Java is a typed language to our
+advantage. We can use types to express what values are valid, limit access to
+some variables, and more. This section focuses on how *I* approached the
+problem of designing a robot codebase that tries to follow these principles and
+make the code easy to write and modify, but hard to break.
 
 .. toctree::
    :titlesonly:

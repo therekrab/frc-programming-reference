@@ -95,13 +95,6 @@ Glossary
       that the component itself is broken, because bad data as an input nearly
       guarantees an invalid output.
 
-   matrix state
-
-      The method of categorizing state as a collection of different, unrelated
-      smaller options. Ex: a boolean toggle for ``elevatorUp``, an enum value for
-      ``pieceStatus``, and another boolean for ``drivetrainMoving``. Each of these
-      values is independent of the other, and they are independent.
-
    encapsulation
 
       From `Wikipedia

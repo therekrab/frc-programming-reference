@@ -7,8 +7,8 @@ distinct groups of tasks per subsystem.
 
 This page provides a general "best practices" list for subsystems.
 
-Expose state through booleans
------------------------------
+Describe state categorically
+----------------------------
 
 Subsystems - like a lot of things in robot programming - have mutable state. It
 becomes important to be able to share this state outside of the subsystem
@@ -29,10 +29,11 @@ we allow public access to physical information about the subsystem, such as an
 elevator's height or a shooter's voltage draw.
 
 All of this information is eventually going to be used to make a decision, so
-it's better to represent that with a ``boolean`` value.
+it's better to represent that with a categorical value (more on that word in
+:doc:`3_1_4_state_theory`.
 
-Turn any simple getters returning non-``boolean`` types to process the
-information, then expose that method as the actual meaning of that information.
+Generally tend towards descriptive, discreet types rather than continuous, raw
+data.
 
 Here's some examples:
 
@@ -67,9 +68,6 @@ this value continues to be valid. Obviously, this is because such a statement
 is false. Not having a piece can easily change to having a piece in the future,
 and vice versa.
 
-This can lead to bugs in the future where old values from this function are
-cached and used instead of updating again.
-
 Instead, it's recommended to use a ``Trigger`` object, which is itself a form
 of a ``BooleanSupplier``. This way, we know that the value from this method is
 always correct, because it updates with the state of the subsystem.
@@ -84,7 +82,9 @@ We should change the method signature to this:
      });
    }
 
-Now, our code returns a ``Trigger`` object which will *always* be valid.
+Now, our code returns a ``Trigger`` object which will *always* be valid, and is
+significantly more easily useable. Fun fact: ``Trigger`` objects also act as
+``BooleanSupplier``\s, so they are *very* versatile.
 
 Return ``Command``\s
 --------------------
@@ -232,7 +232,8 @@ Now, instead of storing the io layer as ``IntakeIOHardware``, we can simply
 update ``IntakeIOHardware`` to implement ``IntakeIO`` and store the IO object
 as an ``IntakeIO`` object, allowing for other classes that also implement
 ``IntakeIO``. We can create a separate class, ``IntakeIOSim`` which has all the
-same methods, but can vary in implementation.
+same methods, but can vary in implementation, making simulations easier to
+change.
 
 We can also create more classes that implement ``IntakeIO`` for unit testing
 purposes if we so desire.
