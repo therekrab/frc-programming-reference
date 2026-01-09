@@ -1,11 +1,6 @@
 3.1.5 - State, Applications
 ===========================
 
-.. danger:: The designs written on this page are completely experimental and
-   hasn't actually been programmed. I was just brainstorming and quite liked
-   this idea. I'm in the process of implementing it in code, but while this
-   message persists, I'm not complete with my implmentation.
-
 This page focuses on how robot-wide state can be incorporated into a robot
 program, and shares my current favorite implementation to do so.
 
