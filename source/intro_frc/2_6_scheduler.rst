@@ -16,7 +16,7 @@ This is where all commands are ran through the command scheduler.
      CommandScheduler.getInstance().run();
    }
 
-A single call to run does the following thigns in order:
+A single call to run does the following things in order:
 
 1. Subsystem ``periodic()`` methods are called.
 

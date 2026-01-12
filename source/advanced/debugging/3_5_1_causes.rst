@@ -115,7 +115,7 @@ place, the robot may not behave as expected (i.e. real voltage is not equal to
 voltage demanded). 
 
 These type of errors are really a subsection of the first major category, but
-are so prevalent that they require their own catergory. These types of issues
+are so prevalent that they require their own category. These types of issues
 manifest from either a lack of reasonable understanding of the code, or a
 strange code structure that makes the coupling obscured or difficult to detect.
 

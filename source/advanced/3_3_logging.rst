@@ -11,7 +11,7 @@ Write your own logger
 Using WPILib' ``DataLog`` class (and its other related classes), you can write
 your own simple logger which logs data values to ``wpilog`` files.
 
-This is a very fun activity, and ensures compatability with anything you can
+This is a very fun activity, and ensures compatibility with anything you can
 think of - because you write the logger yourself.
 
 DogLog

@@ -71,7 +71,7 @@ In our example, if we had wanted ``arm``'s default command to run when the
        arm.stow().asProxy(),
        intake.intake());
 
-Now the default command on ``arm`` will run when the stow command finsihes,
+Now the default command on ``arm`` will run when the stow command finishes,
 even while the sequential group is still running.
 
 Proxies in autonomous routines

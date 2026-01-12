@@ -57,7 +57,7 @@ Now, we should compare the expected behavior to the experimental behavior. By
 comparing the expected inputs and outputs of each software component, we can
 look for a difference; that's the first point of failure. After this, the robot
 is no longer doing what it was expected to do, which means that our issue has
-already occured.
+already occurred.
 
 .. note:: Don't take this to mean that there will only ever be one error at a
    time; it's very possible to have multiple errors cumulating in a broken

@@ -37,7 +37,7 @@ Declarative vs imperative programming
 do. For example, I could say "Make a PB&J sandwich" to produce a peanut butter
 and jelly sandwich.
 
-**Imperative** programming is the opposite. Imperative programing focuses more
+**Imperative** programming is the opposite. Imperative programming focuses more
 on the *how* than the *why*. For example, "Spread peanut butter on one side of
 a loaf of bread. Then spread jelly on one side of a separate slice of bread.
 Then touch the two slices together such that the peanut butter and jelly are
@@ -79,7 +79,7 @@ What subsystems do
    subsystem.
 
 Creating a layer in code between hardware objects (motors, sensors, etc.) and
-external robot code is benificial for a variety of reasons.
+external robot code is beneficial for a variety of reasons.
 
 Firstly, subsystems provide encapsulation of protected hardware. Subsystems
 ensure that we can't just demand arbitrary outputs from hardware, such as

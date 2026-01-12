@@ -143,7 +143,7 @@ instance by adding the following method to the ``Superstructure`` class:
    }
 
 Now this is the *only* method that we can use to build commands, and it *only*
-works with classes that explicity implement ``CommandBuilder``. We store the
+works with classes that explicitly implement ``CommandBuilder``. We store the
 logic to construct the command from subsystem-specific commands in those
 classes,  and then from there we can call ``superstructure.build()`` and pass
 in a command builder class to build a command. The rest of the code can't
@@ -151,7 +151,7 @@ modify the fundamental behavior of this command, because they don't have access
 to the subsystems - only the command builder classes themselves do. We've
 successfully ensured that all of our commands are constructed in the same,
 consistent location, and it's rather difficult to break this design without
-some very noticable tomfoolery.
+some very noticeable tomfoolery.
 
 To see an example, here's an example of a ``IntakePiece`` state:
 

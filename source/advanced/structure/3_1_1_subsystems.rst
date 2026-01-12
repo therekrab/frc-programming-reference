@@ -32,7 +32,7 @@ All of this information is eventually going to be used to make a decision, so
 it's better to represent that with a categorical value (more on that word in
 :doc:`3_1_4_state_theory`.
 
-Generally tend towards descriptive, discreet types rather than continuous, raw
+Generally tend towards descriptive, discrete types rather than continuous, raw
 data.
 
 Here's some examples:
@@ -63,7 +63,7 @@ Consider this method in a ``Manipulator`` subsystem:
 
 This works fine, and is usable outside of our program. It doesn't expose any
 information about the subsystem besides what the user actually wants to know,
-so it seems good. However, there's no gaurantee in code at compile time that
+so it seems good. However, there's no guarantee in code at compile time that
 this value continues to be valid. Obviously, this is because such a statement
 is false. Not having a piece can easily change to having a piece in the future,
 and vice versa.
@@ -83,7 +83,7 @@ We should change the method signature to this:
    }
 
 Now, our code returns a ``Trigger`` object which will *always* be valid, and is
-significantly more easily useable. Fun fact: ``Trigger`` objects also act as
+significantly more easily usable. Fun fact: ``Trigger`` objects also act as
 ``BooleanSupplier``\s, so they are *very* versatile.
 
 Return ``Command``\s

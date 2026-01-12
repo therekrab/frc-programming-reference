@@ -38,7 +38,7 @@ Using Arducams
 
 If you're using ArduCams, use the ArduCam Serial Number Tool to give the
 devices recognizable names. Things can act weird if multiple devices have the
-smae exact name.
+same exact name.
 
 Deciding a frame rate
 ~~~~~~~~~~~~~~~~~~~~~
@@ -70,7 +70,7 @@ Firstly, do we want vision to act as a subsystem, just like all the other
 mechanisms on the robot? Many teams take this approach, but I don't believe
 that this is the way to go. For one, vision doesn't need the requirements
 features that subsystems get. Also, we may not want our vision updates to occur
-syncronously with all the other ``periodic()`` methods in code. Maybe we'd like
+synchronously with all the other ``periodic()`` methods in code. Maybe we'd like
 another thread for that instead, if we have lots of vision updates per second.
 
 Structure overview
@@ -141,7 +141,7 @@ them. Finally, it also accepts a ``MultiInputFilter``.
 The ``SingleInputPoseEstimator`` class exposes a method ``refresh(Pose2d
 robotPose)`` which uses its internal ``CameraIO`` object to update the
 ``CameraIOInputs`` value. If the camera is disconnected, display a warning
-using an ``Alert``. Finally, this method udpates the ``MultiInputFilter`` with
+using an ``Alert``. Finally, this method updates the ``MultiInputFilter`` with
 the tag IDs that were seen.
 
 Then, the SIPO also exposes a ``run()`` method, which does the following steps.

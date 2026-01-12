@@ -11,7 +11,7 @@ The short answer... our human nature. It's easiest for us to add code, change
 behavior, or squash bugs when the code is organized in a way that helps us do
 so.
 
-Symtoms of poorly organized code
+Symptoms of poorly organized code
 --------------------------------
 
 These are signs that code is not optimally organized:

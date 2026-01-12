@@ -20,7 +20,7 @@ challenging (not to code, but just to design).
 Naively, we could just include the derivations for each robot-wide state
 variable (which will just be referred to as state for the rest of this page)
 could be included in each command builder class where it is necessary. However,
-this opens the door for discrepencies between command builders, where their
+this opens the door for discrepancies between command builders, where their
 implementations of this 'state calculation' process differ for the same state
 variable. This can lead to problems because they may be expected to be
 referring the same state variable when, in fact, they are not.

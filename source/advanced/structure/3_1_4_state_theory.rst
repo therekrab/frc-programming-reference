@@ -1,7 +1,7 @@
 3.1.4 - State, Theory
 =====================
 
-.. note:: This is a theoretical document explicity defining some key terms and familiarizing you with some concepts.
+.. note:: This is a theoretical document explicitly defining some key terms and familiarizing you with some concepts.
 
 .. attention:: I'm no certified expert in CS; thus, I'll provide my own names
    for some concepts/designs. Other names may exist, but I stumbled across
@@ -23,7 +23,7 @@ the current configuration of the robot. This could be any of the following:
 
 - Software variables, such as desired position/configuration or match time.
 
-All of these need to be accesed by the robot program to make decisions
+All of these need to be accessed by the robot program to make decisions
 dynamically.
 
 Note that state is mutable. This means that it can change, and that change
@@ -162,7 +162,7 @@ following variants:
 
 Note that now, there is no way to represent the impossible state of scoring
 without a gamepiece secured. If the robot reaches that point, then we will have to
-explicity write code to handle that edge case in the logic to turn the
+explicitly write code to handle that edge case in the logic to turn the
 individual values of ``GamepieceStatus`` and ``EffectorStatus`` into
 ``PieceEffectorStatus``. Here, explicitly  making that decision is exactly what we
 want; we don't want to overlook the edge case now and then realize we had a bug

@@ -96,7 +96,7 @@ Don't add a ``README``, ``.gitignore``, nor a license.
    information.
 
    A ``.gitignore`` is another important file that tells ``git`` to completely
-   ignroe some files. In VS Code, we'd see this as them not showing up in
+   ignore some files. In VS Code, we'd see this as them not showing up in
    ``Source Control`` even if they have changes present.
 
 Press ``Create repository`` to create it.
@@ -185,7 +185,7 @@ description. Make sure to select the option that commits directly to ``main``.
 We'll talk about pull requests later.
 
 Now you'll see the rendered ``README`` when you go to the homepage for the
-repostiory, by clicking on the repository name in the top left.
+repository, by clicking on the repository name in the top left.
 
 .. figure:: /_static/github_readme_render.png
 

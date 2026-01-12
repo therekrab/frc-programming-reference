@@ -4,7 +4,7 @@
 
 WPILib offers a ``Command`` class that you can subclass (inherit from) to
 create new commands. These commands have four important methods that can be
-overriden to change the behavior of the command.
+overridden to change the behavior of the command.
 
 Initialization
 --------------

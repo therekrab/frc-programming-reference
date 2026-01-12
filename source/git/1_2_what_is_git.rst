@@ -59,7 +59,7 @@ thing.
 
 .. image:: /_static/vs_code_vc.png
 
-Select the ``Initialize Repository`` button to start a ``git`` respository in
+Select the ``Initialize Repository`` button to start a ``git`` repository in
 the selected folder.
 
 Now you should see:
@@ -83,7 +83,7 @@ called ``hello.txt``.
 
    The ``.txt`` part of ``hello.txt`` is a **file extension** and is used to
    tell programs like VS Code what kind of a file this is. ``txt`` is an
-   indiactor that this is a plain text file.
+   indicator that this is a plain text file.
 
 Press enter to create the file, and it should show up in the explorer menu as
 green.
@@ -144,7 +144,7 @@ button. This **stages** our file, and tells ``git`` to do two things:
    now monitor this file for changes since the last commit.
 
 2. Mark the changes in a tracked file as "ready for commit". With ``git``, you
-   don't just commit *all* changes. You have to explicity tell ``git`` which
+   don't just commit *all* changes. You have to explicitly tell ``git`` which
    file changes are good to be saved. This gives you more control over what
    gets committed and saved - and what doesn't.
 
@@ -178,7 +178,7 @@ changes, but removes them from the group of changes that are staged.
    that we *don't* want ``git`` to track, that either don't contain our source
    code, or have sensitive information like passwords.
 
-Commiting changes
+Committing changes
 ~~~~~~~~~~~~~~~~~
 
 Once we're ready for our changes to be saved forever, we can **commit** them.
@@ -239,7 +239,7 @@ Let's add some extra information to ``hello.txt``:
 I've highlighted the lines we added.
 
 Now, notice the filename now appears in orange/yellow, and we see the changes
-are visibile in the ``Source Control`` panel in the activity bar.
+are visible in the ``Source Control`` panel in the activity bar.
 
 .. image:: /_static/vs_code_unstaged_modifications.png
 
@@ -272,7 +272,7 @@ file: ``goodbye.txt``.
 We could do what we've been doing - adding new data to a file, staging, and
 committing our changes. However, it's normally good practice to make
 modifications in a separate **branch** and then merge in the changes when we're
-happy wth them.
+happy with them.
 
 This is especially important when writing code, because we want to make sure
 that our ``main`` branch is safe and stable. If we have experimental features,
@@ -373,7 +373,7 @@ indicating that the file is no longer present:
    The file ``goodbye.txt`` no longer exists, so it's crossed out in red. We
    can close the tab by pressing the ``X`` next to the filename.
 
-But let's say we're happy with the chagnes on the ``goodbye`` branch, and we
+But let's say we're happy with the changes on the ``goodbye`` branch, and we
 want those to be combined with what we've got on ``main``. 
 
 Merging branches

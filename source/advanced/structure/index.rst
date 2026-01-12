@@ -28,9 +28,9 @@ the likelihood that our code will be used properly.
 
 Oftentimes, it's very much impossible to fully have a zero-trust relationship
 with the client. So we have to turn to the next best option: making a system
-such that the client would have to *actively* try to mess someting up.
+such that the client would have to *actively* try to mess something up.
 
-Enfore rules with types, not comments
+Enforce rules with types, not comments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In code, when we expose features to the client, we are inherently making a
@@ -49,7 +49,7 @@ let's turn to our best friend - the compiler. If we can somehow make the
 *compiler* understand our intentions and the rules of what we're trying to do,
 then if the client tries to misuse our code, *their entire program will break.*
 
-Let's consider a ``Stopwatch`` class that we're making. Imagine a publically
+Let's consider a ``Stopwatch`` class that we're making. Imagine a publicly
 exposed method called ``getElapsedTime()`` that returns the elapsed time since
 the stopwatch was created.
 

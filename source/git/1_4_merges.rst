@@ -69,7 +69,7 @@ This is called a **merge conflict** and can be very difficult to work through.
 Example
 -------
 
-Merges, expecially merge conflicts, are sometimes difficult at first to handle.
+Merges, especially merge conflicts, are sometimes difficult at first to handle.
 Let's run through an example merge conflict and see what to do.
 
 We'll be continuing our project that we've been working on. See

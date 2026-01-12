@@ -89,7 +89,7 @@ In code, we use ``Commands.race()`` to race a group of commands.
        commandC);
 
 This runs ``commandA``, ``commandB``, and ``commandC`` in parallel until any
-one finsihes, then cancels all the remaining (unfinished) commands.
+one finishes, then cancels all the remaining (unfinished) commands.
 
 Deadline group
 ~~~~~~~~~~~~~~
