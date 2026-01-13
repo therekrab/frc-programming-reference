@@ -69,7 +69,7 @@ Categorical variables end up being more useful for a few reasons:
 3. We can abstract away unnecessary information and leave a more
    :term:`declarative` external API for our code. Rather than giving the client
    the responsibility to determine the correct setpoint in motor units, we can
-   just use an enum with that value hard-coded in, in private interal code,
+   just use an enum with that value hard-coded in, in private internal code,
    without the rest of the code needing to worry about the internal
    implementation, or the "magic numbers" that make the code work. This also
    follows the principles of :term:`encapsulation`.

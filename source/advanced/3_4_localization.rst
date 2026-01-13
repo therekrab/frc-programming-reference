@@ -30,7 +30,7 @@ basic list of steps:
 3. Decide on a frame rate and resolution (advice on deciding this further
    down).
 
-4. Calibrate each camera for 3D using at the same resolution, accoring to the
+4. Calibrate each camera for 3D using at the same resolution, according to the
    procedures listed in the PV docs.
 
 Using Arducams

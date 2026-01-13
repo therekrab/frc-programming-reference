@@ -205,5 +205,5 @@ can see the file in the Explorer.
 .. important:: Bad things can happen if you don't run ``Pull`` before
    committing yourself. Most of the time, ``git`` is powerful enough to know
    what to do automatically, but it can lead to bad stuff happening if you
-   don't write code on the lastest version of the codebase. *Always* pull
-   before you start coding.
+   don't write code on the latest version of the codebase. *Always* pull before
+   you start coding.

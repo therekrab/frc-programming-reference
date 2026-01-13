@@ -164,7 +164,7 @@ similar.
 However, that's not true if we write ``a.alongWith(b, c)``. Why is ``a`` the
 command that gets the method called on it? As more commands get added to the
 group, the question of "which command do I call the method on" becomes
-prevalent - further so when we don't ues simple named commands.
+prevalent - further so when we don't use simple named commands.
 
 On another note, look at this:
 
