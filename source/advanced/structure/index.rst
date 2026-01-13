@@ -4,11 +4,6 @@
 This subsection deals with a particularly effective way to structure a robot
 project for FRC.
 
-.. note:: Although it is heavily focused on commands to represent robot
-   actions, I will not refer to this paradigm as "command-based" because it
-   also includes ideas from other design patterns, such as finite state
-   machines.
-
 Why structure matters
 ---------------------
 
