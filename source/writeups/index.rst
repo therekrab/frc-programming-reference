@@ -1,6 +1,9 @@
 4 - Writeups
 ============
 
+.. note:: This is currently a WIP and is empty as of right now. Expect more in
+   the future.
+
 This section is different from the other sections in this book; instead of
 teaching general programming knowledge, this section contains writeups for many
 different subprojects used for a real robot.
