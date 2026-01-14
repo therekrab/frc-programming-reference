@@ -145,10 +145,10 @@ Let's try a new visualization of the same commit history we saw last time:
    that while keeping the ``add conclusion`` commit? It's original version is
    now gone, too, so how would we know what changes to make?
 
-This shows what we saw earlier - the rephrase commit preceeded the commit to
-add the conclusion, and the ``add conclusion`` commit came from the
-``rephrase`` commit, so you can't jump to before the ``rephrase`` commit
-without losing the ``add conclusion`` part as well.
+This shows what we saw earlier - the rephrase commit preceded the commit to add
+the conclusion, and the ``add conclusion`` commit came from the ``rephrase``
+commit, so you can't jump to before the ``rephrase`` commit without losing the
+``add conclusion`` part as well.
 
 Here's a version that utilizes branches to work on different parts of code in parallel:
 
