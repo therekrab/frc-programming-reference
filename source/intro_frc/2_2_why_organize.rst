@@ -12,7 +12,7 @@ behavior, or squash bugs when the code is organized in a way that helps us do
 so.
 
 Symptoms of poorly organized code
---------------------------------
+---------------------------------
 
 These are signs that code is not optimally organized:
 

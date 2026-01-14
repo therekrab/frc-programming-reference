@@ -13,7 +13,7 @@ Let's run through some common situations, using a file ``hello.txt``.
 
 Here's its initial contents:
 
-.. code-block::
+.. code-block:: text
    :caption: hello.txt
 
    Hello!
@@ -26,7 +26,7 @@ Let's say that we have two branches - ``main`` and ``spanish``.
 If we branch off of ``main`` to create ``spansh``, then we add this to
 ``hello.txt`` (changes are highlighted):
 
-.. code-block::
+.. code-block:: text
    :caption: hello.txt
    :emphasize-lines: 2
 

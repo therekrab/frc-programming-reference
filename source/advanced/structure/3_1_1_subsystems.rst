@@ -192,7 +192,7 @@ forgetting to update one value.
 
 Instead, we can create an "IO inputs" class that looks like this:
 
-.. code-blcok:: java
+.. code-block:: java
    :caption: IntakeIOInputs.java
 
    public class IntakeIOInputs {

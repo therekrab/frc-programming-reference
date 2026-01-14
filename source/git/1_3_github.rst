@@ -80,7 +80,7 @@ the top left of the screen.
 
 We need a repository name, so let's do ``example-repo``. We also can enter a description:
 
-.. code-block::
+.. code-block:: text
    :caption: Repository Description
 
    A simple repositroy to learn about git, VS Code, and GitHub integration.

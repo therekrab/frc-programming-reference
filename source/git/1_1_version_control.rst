@@ -90,7 +90,7 @@ then add the conclusion.
 
 In the commit history, we would see something that looked like this:
 
-.. code-block::
+.. code-block:: text
    :caption: Commit history
 
    (snip)
@@ -129,7 +129,7 @@ really no point! We call this process **merging**.
 
 Let's try a new visualization of the same commit history we saw last time:
 
-.. code-block::
+.. code-block:: text
    :caption: Commit history
 
    --- (last change) --- ( rephrase ) --- ( add conclusion )
@@ -152,7 +152,7 @@ without losing the ``add conclusion`` part as well.
 
 Here's a version that utilizes branches to work on different parts of code in parallel:
 
-.. code-block::
+.. code-block:: text
    :caption: Commit history
 
                       -- ( rephrase ) ---------

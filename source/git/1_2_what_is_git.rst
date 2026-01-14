@@ -179,7 +179,7 @@ changes, but removes them from the group of changes that are staged.
    code, or have sensitive information like passwords.
 
 Committing changes
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
 Once we're ready for our changes to be saved forever, we can **commit** them.
 When we make a commit, we tell ``git`` to take a snapshot of all *staged*
@@ -201,7 +201,7 @@ of our commit. There are a few general guidelines on how to make a good commit m
 
 As an example, this can be our commit message:
 
-.. code-block::
+.. code-block:: text
    :caption: Commit message
 
    Create hello.txt
@@ -221,7 +221,7 @@ Let's say we want to modify an already tracked file. This is really easy.
 
 Let's add some extra information to ``hello.txt``:
 
-.. code-block::
+.. code-block:: text
    :caption: hello.txt
    :emphasize-lines: 1-4
 
@@ -321,7 +321,7 @@ through the action panel, and create a new file, just like we did with
 
 We can enter some text in this file, like before:
 
-.. code-block::
+.. code-block:: text
    :caption: goodbye.txt
 
    Goodbye! See you later!

@@ -26,7 +26,7 @@ with the client. So we have to turn to the next best option: making a system
 such that the client would have to *actively* try to mess something up.
 
 Enforce rules with types, not comments
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In code, when we expose features to the client, we are inherently making a
 *promise* with the client that we will do what we say we will do. This goes the

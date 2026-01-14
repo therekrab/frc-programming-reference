@@ -32,25 +32,25 @@ code.
    abstraction-level software, but it isn't always great when it comes to
    diagnosing issues with real hardware.
 
-9. If applicable, check your units. Unit conversion errors can result in a
+8. If applicable, check your units. Unit conversion errors can result in a
    variety of unexpected behavior.
 
-10. Debugging is hard, but never is impossible. You'll get better with
+9. Debugging is hard, but never is impossible. You'll get better with
     practice, but it takes time to learn common issues with domain-specific
     technologies and systems (e.g. CTRE devices have their own common
     problems).
 
-11. Write your code with debugging in mind. Good organization and fixing
+10. Write your code with debugging in mind. Good organization and fixing
     unnecessarily tight coupling can help to make sure that code is easy to
     change and test in the future.
 
-12. Sometimes, it's easy to identify the issue, but harder to write the code
+11. Sometimes, it's easy to identify the issue, but harder to write the code
     that solves it. In these cases, you may be tempted to use :term:`bandaid
     code`, but avoid these urges unless absolutely necessary. Often, taking the
     additional time to write the *correct* solution ensures no adverse
     side-effects occur.
 
-13. Understand that assumptions are the *only* thing that can get in the way
+12. Understand that assumptions are the *only* thing that can get in the way
     between expected behavior and actual behavior. Thus, verify all your
     assumptions - when you turn assumptions about reality into either *true* or
     *false* realities, you *ensure* that you can logically follow the robot's

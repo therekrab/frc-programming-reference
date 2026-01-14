@@ -17,7 +17,8 @@ think of - because you write the logger yourself.
 DogLog
 ------
 
-`DogLog <https://doglog.dev>`_ is a simple logger for FRC.
+`DogLog <https://docglog.dev>`_ is another logger for FRC which is simpler than
+AdvantageKit and easier to use than the ``DataLog`` classes.
 
 AdvantageKit
 ------------
