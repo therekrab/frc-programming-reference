@@ -85,10 +85,10 @@ state variables are more likely to be helpful in a different capacity. So this
 is less of a problem than anything else mentioned so far.
 
 Additionally, this has the same issue as putting the state calculations in the
-``Subsystem`` class; that is, it will fill up the file with methods that aren't
-directly a part of the class's original intent. The ``Superstructure`` class is
-meant to be a limited communication point between individual subsystems and the
-rest of the robot code.
+``Subsystems`` class; that is, it will fill up the file with methods that
+aren't directly a part of the class's original intent. The ``Superstructure``
+class is meant to be a limited communication point between individual
+subsystems and the rest of the robot code.
 
 So why not move the state calculations to another class? Because Java treats
 non-primative variables as *references*, not values, we could pass the
