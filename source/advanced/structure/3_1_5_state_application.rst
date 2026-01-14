@@ -4,6 +4,9 @@
 This page focuses on how robot-wide state can be incorporated into a robot
 program, and shares my current favorite implementation to do so.
 
+The problem
+-----------
+
 Effectively, the problem is rather simple. Because command-builders have the
 sole responsibility to construct commands, they generally have to have access
 to robot-wide state. Because robot-wide state is deterministically dependent on
@@ -16,6 +19,12 @@ generally accessible, but we also need to make sure that where ever we put the
 code, it needs to have access to the subsystems themselves as well. Given the
 rather limited availability of the ``subsystems`` object, this proves to be
 challenging (not to code, but just to design).
+
+The solution(s)
+---------------
+
+A basic approach
+~~~~~~~~~~~~~~~~
 
 Naively, we could just include the derivations for each robot-wide state
 variable (which will just be referred to as state for the rest of this page)
@@ -39,13 +48,17 @@ pass in *another* ``Supplier``? This could get out of hand. It would be better
 if we could just separate the state calculation code from the highly protected
 subsystem objects.
 
-Thus, we could move all of the state calculation logic to the ``Subsystems``
-class. This would result in one implementation of each state calculation
-implementation, but that doesn't mean we're in the clear yet. This approach
-still has its own issues, mainly that it continues to be highly restrictive of
-what parts of code can read state variables. Additionally, it forces a lot of
-extra code into the ``Subsystems`` class that we explicitly *don't* want
-strongly correlated with the subsystems themselves (for protection reasons).
+Instead, we could move all of the state calculation logic to the
+``Subsystems`` class. This would result in one implementation of each state
+calculation implementation, but that doesn't mean we're in the clear yet. This
+approach still has its own issues, mainly that it continues to be highly
+restrictive of what parts of code can read state variables. Additionally, it
+forces a lot of extra code into the ``Subsystems`` class that we explicitly
+*don't* want strongly correlated with the subsystems themselves (for protection
+reasons).
+
+A better approach
+~~~~~~~~~~~~~~~~~
 
 Another possible implementation is moving the unified state calculation code to
 the ``Superstructure`` class. As part of the superstructure, it would have
@@ -79,10 +92,13 @@ rest of the robot code.
 
 So why not move the state calculations to another class? Because Java treats
 non-primative variables as *references*, not values, we could pass the
-``subsystems`` record to another class, ``StateManager`` (or some better name).
-The ``Superstructure`` class could construct a ``final`` instance of this class
-during its initialization, and simply allow public access to the field to get a
-``state`` object which could be queried for information about the robot's state.
+``subsystems`` record to another class, ``StateManager`` (or some better name
+which I haven't come up with yet). This class would be responsible for holding
+all of the state calculation code, and would have *internal*, but not exposed,
+access to the ``subsystems`` record. The ``Superstructure`` class could
+construct a ``final`` instance of this class during its initialization, and
+simply allow public access to the field to get a ``state`` object which could
+be queried for information about the robot's state.
 
 This seems to solve most of our issues so far: it separates the state
 calculation code into a place separate from the ``Superstructure`` or
@@ -92,8 +108,47 @@ class as a class which can be passed to other parts of the robot code safely,
 and a ``state`` field which is responsible for providing robot-wide state
 variables which are likely necessary in other parts of the program.
 
-Addressing repeated functions
------------------------------
+Summary
+-------
+
+Here's a "graphical" representation of the structure of the robot program that
+uses this design:
+
+.. code-block:: text
+   :caption: Structure of Superstructure
+
+   Superstructure
+    - (public) StateManager instance
+      - (private) Subsystems instance
+    - (private) Subsystems instance
+
+Note that there are going to be two variables called `subsystems`, however
+they'll both be references to the same object. We don't have two different
+copies of the ``Subsystems`` record.
+
+Here's how the system works:
+
+1. The ``RobotContainer`` class instantiates the ``Superstructure`` class,
+   which creates the ``Subsystems`` record and shares it with the
+   ``StateManager`` instance.
+
+2. The ``StateManager`` instance is simply a final, public field ``state`` on
+   the ``Superstructure`` field. Anywhere in code that requires robot-wide
+   state uses this object to query the robot's state.
+
+3. ``CommandBuilder``\s' ``build()`` method accepts both a ``Subsystems``
+   object *and* a ``StateManager`` object. This lets them work with both
+   robot-wide *and* subsystem-specific state data to form complex commands.
+
+4. ``Binder``\s can access ``Trigger``\s corresponding to robot state because
+   their ``bind()`` method accepts the ``Superstructure`` object, whose public
+   field ``state`` allows the ``Binder``\s access to robot state.
+
+5. Other classes, like vision, can also use the ``StateManager`` object to
+   query robot state, such as the robot pose.
+
+Repeated functions
+------------------
 
 It's not unlikely you'll find yourself writing robot-wide state-getters which
 simply echo the state of one subsystem. Although this code can be a bit

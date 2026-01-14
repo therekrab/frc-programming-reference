@@ -14,14 +14,14 @@ your own simple logger which logs data values to ``wpilog`` files.
 This is a very fun activity, and ensures compatibility with anything you can
 think of - because you write the logger yourself.
 
-DogLog
-------
+Using DogLog
+------------
 
 `DogLog <https://docglog.dev>`_ is another logger for FRC which is simpler than
 AdvantageKit and easier to use than the ``DataLog`` classes.
 
-AdvantageKit
-------------
+Using AdvantageKit
+------------------
 
 `Advantage Kit <https://docs.advantagekit.org/>`_ is a powerful tool developed
 by team 6328. It does much more than logging, but instead can shape the entire

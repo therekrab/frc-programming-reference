@@ -97,7 +97,7 @@ there has been some modification to the file, but the file itself is not new.
 
 Let's put some content in our file. Here's what we could write:
 
-.. code-blocK::
+.. code-block:: text
    :caption: hello.txt
 
    Hello world! The phrase "Hello, World!" is a common saying among

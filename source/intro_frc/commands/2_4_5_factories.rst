@@ -72,6 +72,16 @@ The factory ``Commands.either(Command onTrue, Command onFalse, BooleanSupplier
 selector)`` can be used to run one of two commands depending on the value of a
 given condition, evaluated at runtime.
 
+``select()``
+
+The factory ``Commands.select(Map<K, Command> commands, Supplier<? extends K>
+selector)`` is used in place of ``Commands.either()`` when there are more
+options than just two. When the command is initialized, it calls ``get()`` on
+``selector`` to get a "key" to use. If the key is found in the map of keys to
+commands, the command corresponding to the given key is scheduled. If there is
+no corresponding key in the map, a command that simply prints a message to the
+console is scheduled instead.
+
 Commands with requirements
 --------------------------
 
@@ -81,8 +91,9 @@ that we generate from factories.
 
 There are two ways to do this.
 
-.. tip:: Refer to the documentation for this section; not all factories are the
-   exact same. This is just a general guide.
+.. tip:: Refer to the documentation for this section; not all factories are
+   listed here and these are certainly not the only "helpful" ones, only the
+   ones I found myself using the most commonly.
 
 Manually passing in subsystems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

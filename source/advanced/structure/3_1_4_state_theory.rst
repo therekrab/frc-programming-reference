@@ -1,14 +1,8 @@
 3.1.4 - State, Theory
 =====================
 
-.. note:: This is a theoretical document explicitly defining some key terms and familiarizing you with some concepts.
-
-.. attention:: I'm no certified expert in CS; thus, I'll provide my own names
-   for some concepts/designs. Other names may exist, but I stumbled across
-   these ideas myself and therefore are not aware of their "formal names".
-   There's no reason for these particular names besides "I figured it sounded
-   okay *and* captures the idea well".
-
+.. note:: This is a theoretical document explicitly defining some key terms and
+   familiarizing you with some concepts.
 
 What is *state*?
 ----------------
@@ -33,13 +27,14 @@ Categorical or quantitative?
 ----------------------------
 
 State, like other variables, can be described as either *categorical* or
-*quantitative*. Categorical state is a situation where the variable in question
-\- some state variable in our case - happens to be a member of a discrete set
-of possible values. Each value is its own thing, and we can't add, multiply,
-divide, or perform any "combination" of operations (think of fruits; you can't
-add "apple" to "banana" and get a reasonable value).
+*quantitative*. **Categorical variables** \- some state variable in our case -
+happens to be a member of a discrete set of possible values. Each value is its
+own thing, and we can't add, multiply, divide, or perform any "combination" of
+operations (think of fruits; you can't add "apple" to "banana" and get a
+reasonable value). In code, this is done using something like an enum. Booleans
+are also examples of categorical state.
 
-Quantitative variables, on the other hand, are described as a numeric value.
+**Quantitative variables**, on the other hand, are described as a numeric value.
 They don't have to be on a continuous scale, but we can combine them through
 well-defined operations like addition. For example, a variable of type ``int``
 would be quantitative - we can add, subtract, multiply, etc. integers and get

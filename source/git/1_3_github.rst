@@ -117,7 +117,9 @@ instructions to connect your GitHub account to your VS Code account.
 
 .. note:: If you're working on a team laptop and you don't get the option to
    sign in to GitHub, that just means you're already signed in through somebody
-   else's account. Let a mentor or lead know and get that sorted out.
+   else's account. Let a mentor or lead know and get that sorted out. Typically
+   this involves using the Windows Credential Manager and removing any
+   github-related credentials under "Windows Keys".
 
 Once signed in through GitHub, we can search through all our
 repositories. Search for the one we just created, and select it.
@@ -158,7 +160,7 @@ Let's enter the following information:
 
    # Hello, World!
 
-   TAhis repository is an example repository to learn how GitHub and `git` work
+   This repository is an example repository to learn how GitHub and `git` work
    together.
 
 .. admonition:: What's ``.md``?
