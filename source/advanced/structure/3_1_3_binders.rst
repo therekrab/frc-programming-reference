@@ -2,8 +2,8 @@
 ===============
 
 WPILib recommends putting button bindings and command initialization and logic
-in ``RobotContainer`` along with instantiating subsystems. IMO this is too much
-responsibility for this one class.
+in ``RobotContainer`` along with instantiating subsystems. In my opinion, this
+is too much responsibility for this one class.
 
 We've learned how to separate the logic of a command (``CommandBuilder``
 classes) from its instantiation (with ``superstructure.build()``) as well as
