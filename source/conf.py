@@ -36,11 +36,15 @@ html_permalinks_icon = Icons.permalinks_icon # nice icons
 html_static_path = ['_static']
 html_favicon = 'favicon.png'
 
+logo = html_favicon
+
 theme_options = ThemeOptions(
     awesome_external_links=True,
     show_breadcrumbs=True,
     breadcrumbs_separator=".",
     show_scrolltop=True,
+    logo_light=logo,
+    logo_dark=logo,
 )
 
 html_theme_options = asdict(theme_options)
