@@ -61,7 +61,7 @@ Consider this method in a ``Manipulator`` subsystem:
      /* snip */
    }
 
-This works fine, and is usable outside of our program. It doesn't expose any
+This works fine, and is usable outside of our class. It doesn't expose any
 information about the subsystem besides what the user actually wants to know,
 so it seems good. However, there's no guarantee in code at compile time that
 this value continues to be valid. Obviously, this is because such a statement
@@ -85,6 +85,10 @@ We should change the method signature to this:
 Now, our code returns a ``Trigger`` object which will *always* be valid, and is
 significantly more easily usable. Fun fact: ``Trigger`` objects also act as
 ``BooleanSupplier``\s, so they are *very* versatile.
+
+Additionally, it's more likely that the end user will want to use this object
+*as* a ``Trigger``, and exposing these as the return type for methods makes it
+easier to access these.
 
 Return ``Command``\s
 --------------------
