@@ -13,17 +13,19 @@ This section of this page extends upon what was said in
 There are a couple of more advanced goals and strategies that are helpful when
 writing bulletproof code (not close to a complete list, just a few big ideas):
 
-Zero trust philosophy
-~~~~~~~~~~~~~~~~~~~~~
+"Zero reliance" philosophy
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A good principle for programming is *never* trust the :term:`client`. Assume
-that they will do anything that they can do with the exposed code. If we design
-our code such that it's as hard as possible to *misuse* our code, the higher
-the likelihood that our code will be used properly.
+A good principle for programming is *never* rely on the :term:`client` to use
+our code as it should be used. Assume that they will do anything that they can
+do with the exposed code. If we design the internals of our code such that it's
+as hard as possible to accidentally misuse it, the higher the likelihood that
+our code will be used properly.
 
-Oftentimes, it's very much impossible to fully have a zero-trust relationship
-with the client. So we have to turn to the next best option: making a system
-such that the client would have to *actively* try to mess something up.
+Oftentimes, it's very much impossible to fully have a zero-reliance
+relationship with the client. Then, we have to turn to the next best option:
+making a system such that the client would have to *actively* try to mess
+something up.
 
 Enforce rules with types, not comments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -33,16 +35,18 @@ In code, when we expose features to the client, we are inherently making a
 other way as well - the client makes an agreement to supply the correct values
 to whatever system we're building.
 
-But see the previous point; we don't trust the client to keep up their end of
+But see the previous point; we don't rely on the client to keep up their end of
 the deal. And therefore, the client could either a) give us invalid data, or b)
 misuse whatever output we give them. So we want to make sure that it's easy for
-the client to see what should be done with our code.
+the client to see what should be done with our code, preventing issues where
+the client misunderstands how our code works.
 
 We *could* write up some great documentation in javadocs and hope that the
 client reads our nice comments and listens. But we don't know if they will. So
-let's turn to our best friend - the compiler. If we can somehow make the
-*compiler* understand our intentions and the rules of what we're trying to do,
-then if the client tries to misuse our code, *their entire program will break.*
+let's turn to a very powerful tool in our tookbox - the compiler. If we can
+somehow make the *compiler* understand our intentions and the rules of what
+we're trying to do, then if the client tries to misuse our code, *their entire
+program will break*.
 
 Let's consider a ``Stopwatch`` class that we're making. Imagine a publicly
 exposed method called ``getElapsedTime()`` that returns the elapsed time since

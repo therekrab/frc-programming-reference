@@ -47,8 +47,8 @@ Here's some examples:
   a subsystem has reached it's setpoint.
 
 Notice how all of these examples require context - what are we using the value
-for? Help clean up the client's code by moving those checks that they will do
-into the subsystem itself.
+for? Help clean up the client's code by moving those checks that they
+shouldn't do into the subsystem itself.
 
 Expose ``Trigger``\s, not ``boolean``\s
 ---------------------------------------
@@ -241,3 +241,85 @@ change.
 
 We can also create more classes that implement ``IntakeIO`` for unit testing
 purposes if we so desire.
+
+Example subsystem: Elevator
+---------------------------
+
+Here is an example elevator subsystem, copied from team 3414's 2025 REEFSCAPE
+program code.
+
+Firstly, the subsystem's IO interface is declared. This is the class that the
+subsystem class itself will use to communicate with the hardware.
+
+.. literalinclude:: example/ElevatorIO.java
+   :caption: ElevatorIO.java
+   :linenos:
+
+Here, we see that we not only declare the ``ElevatorIO`` interface, but we also
+define the ``ElevatorIOInputs`` class. For a real robot, there are a *lot* of
+inputs, so we list each of them here. We also define several other low-level
+methods, such as ``setVoltage()`` and ``setPosition()``, and some more
+features.
+
+We can now take a look at the hardware implementation of the ``ElevatorIO``
+interface:
+
+.. literalinclude:: example/ElevatorIOHardware.java
+   :caption: ElevatorIOHardware.java
+   :linenos:
+
+This class supplies the basic hardware-facing code needed to control a physical
+elevator with two ``TalonFX`` motor controllers.
+
+.. note:: If you're curious about the many, many ``StatusSignal``\s throughout
+   this code, read the section :doc:`/advanced/3_2_status_signals`.
+
+Now, let's look at another class that implements ``ElevatorIO``, but instead
+runs a (very basic) simulation of the system:
+
+.. literalinclude:: example/ElevatorIOSim.java
+   :caption: ElevatorIOSim.java
+   :linenos:
+
+Notice that the implementation is completely different. Some methods, such as
+``enableLimits()``, are simply no-ops that don't do anything in simulation.
+This doesn't actually accurately simulate the elevator, but that's OK. For
+basic simulation tests, it's acceptable to have a subsystem that doesn't model
+all the complex real-world factors. If we wanted, we could create another class
+that implements the ``ElevatorIO`` interface (maybe call it
+``ElevatorIOAdvancedSim``) which would use more powerful simulation technology.
+But we don't have to.
+
+Before we finish this up by looking at the actual ``Elevator`` class, we need
+two more helper files.
+
+Firstly, we may have an ``ElevatorConstants`` file which stores important
+constants about our elevator. Here's what that may look like:
+
+.. literalinclude:: example/ElevatorConstants.java
+   :caption: ElevatorConstants.java
+   :linenos:
+
+This class is rather straightforward; if there's any constants about your
+subsystem, you can put them here.
+
+Another simple yet important class is an enum class that represents valid
+elevator setpoints. We call this one ``ElevatorState``:
+
+.. literalinclude:: example/ElevatorState.java
+   :caption: ElevatorState.java
+   :linenos:
+
+Notice that the actual position values are hidden from any code outside the
+package ``frc.robot.subsystems.elevator``, meaning anywhere outside the
+subsystem package, if a setpoint needs to be set, it *must* use the clear enum
+types rather than "magic numbers".
+
+Finally, we can take a look at the ``Elevator`` subsystem class:
+
+.. literalinclude:: example/Elevator.java
+   :caption: Elevator.java
+   :linenos:
+
+.. note:: This is a trimmed version of the subsystem. Not all the code is here,
+   only that which is actually relevant to readythis section.
