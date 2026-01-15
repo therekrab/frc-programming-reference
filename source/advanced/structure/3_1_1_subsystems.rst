@@ -131,8 +131,8 @@ problems:
   is necessary here, but is verbose and can be incorrectly done.
 
 - Inputs that don't actually make sense for the mechanism are also allowed
-  unchecked. There's rarely a finite number of positions for a system to be in,
-  which isn't great.
+  unchecked. There's rarely an infinite number of positions for a system to be
+  in, which isn't great.
 
 - It's up to the client to make sure that the setpoints are valid, which
   violates subsystem's rules of isolated internals. The user shouldn't have to
