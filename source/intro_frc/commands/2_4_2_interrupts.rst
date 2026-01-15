@@ -2,7 +2,7 @@
 =============================
 
 One advantage of using the WPILib commands library is its powerful ability to
-avoid :term:`UB` by creating a resource-management system to make sure that
+avoid :term:`undefined behavior` by creating a resource-management system to make sure that
 multiple commands can't concurrently access the same subsystem. Imagine telling
 an elevator to go up and down at the same time. What would happen? We can't
 determine without more information.

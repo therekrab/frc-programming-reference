@@ -14,9 +14,11 @@ shorter to write, and they allow us to write commands using a much more
 Common factories
 ----------------
 
-.. tip:: There are more factories than listed here; these are only the ones
-   that are most useful. To gain a better understanding of what is possible,
-   read the documentation for the ``Commands`` class (not ``Command``).
+.. tip:: Refer to the `documentation
+   <https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/Commands.html>`_
+   in addition to this section; not all factories are listed here and these are
+   certainly not the only "helpful" ones, only the ones I found myself using
+   the most commonly.
 
 ``run()``
 ~~~~~~~~~
@@ -73,6 +75,7 @@ selector)`` can be used to run one of two commands depending on the value of a
 given condition, evaluated at runtime.
 
 ``select()``
+~~~~~~~~~~~~
 
 The factory ``Commands.select(Map<K, Command> commands, Supplier<? extends K>
 selector)`` is used in place of ``Commands.either()`` when there are more
@@ -80,7 +83,8 @@ options than just two. When the command is initialized, it calls ``get()`` on
 ``selector`` to get a "key" to use. If the key is found in the map of keys to
 commands, the command corresponding to the given key is scheduled. If there is
 no corresponding key in the map, a command that simply prints a message to the
-console is scheduled instead.
+console is scheduled instead. This is a rarely used factory, but when you find
+a use for it, it is incredibly powerful.
 
 Commands with requirements
 --------------------------
@@ -90,10 +94,6 @@ execute. We need some way to specify which subsystems are required for commands
 that we generate from factories.
 
 There are two ways to do this.
-
-.. tip:: Refer to the documentation for this section; not all factories are
-   listed here and these are certainly not the only "helpful" ones, only the
-   ones I found myself using the most commonly.
 
 Manually passing in subsystems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

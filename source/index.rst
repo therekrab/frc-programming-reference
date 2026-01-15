@@ -5,8 +5,8 @@ Welcome to the Programming Reference Book, written by team 3414's software
 team.
 
 This book is intended to be a supplementary tool to be used in the preseason to
-train new members for software. This book was developed for team 3414, but there
-is no reason this shouldn't be used for other teams.
+train new members for software and (in the advanced section) establish a
+baseline structure for a robot project that works well during the build season.
 
 Covering topics from introductory Git to advanced architecture patterns in FRC
 code, this book will be long and full of information. For that reason, this
