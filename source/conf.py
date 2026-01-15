@@ -34,6 +34,7 @@ html_theme = 'sphinxawesome_theme'
 html_title = project
 html_permalinks_icon = Icons.permalinks_icon # nice icons
 html_static_path = ['_static']
+html_favicon = 'favicon.png'
 
 theme_options = ThemeOptions(
     awesome_external_links=True,
