@@ -136,7 +136,7 @@ problems:
 
 - It's up to the client to make sure that the setpoints are valid, which
   violates subsystem's rules of isolated internals. The user shouldn't have to
-  know what the correct position values are for a subsystem.
+  know what the correct mechanism position values are for a subsystem.
 
 All of these problems can be replaced with a simple enum in code. Enums that
 represent possible subsystem states have the following advantages:
