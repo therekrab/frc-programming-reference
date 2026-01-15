@@ -19,6 +19,7 @@ author = 'Nolan Barker'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
+    "sphinx_new_tab_link",
     "sphinx.ext.extlinks",
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
