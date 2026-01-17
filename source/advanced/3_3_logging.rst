@@ -23,8 +23,9 @@ You configure Epilogue in the ``Robot.java`` class, in the constructor for
 Epilogue (I've highlighted the most important lines):
 
 .. code-block:: java
-  :emphasize-lines: 6,11,15,20,22
+  :emphasize-lines: 7,12,16,21,23
 
+  @Logged
   public class Robot extends TimedRobot {
     public Robot() {
       Epilogue.configure(config -> {
@@ -49,6 +50,8 @@ Epilogue (I've highlighted the most important lines):
       Epilogue.bind(this);
     }
   }
+
+It's crucial to add the ``@Logged`` annotation for the ``Robot`` class.
 
 Typically, it's advisable to only log to disk rather than NT, because the
 network writes can take a long time (relative to the robot's loops).
