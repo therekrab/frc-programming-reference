@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+
+<html :class="{'dark': darkMode === 'dark' || (darkMode === 'system' &amp;&amp; window.matchMedia('(prefers-color-scheme: dark)').matches)}" class="scroll-smooth" data-content_root="../" lang="en" x-data="{ darkMode: localStorage.getItem('darkMode') || localStorage.setItem('darkMode', 'system'), activeSection: '' }" x-init="$watch('darkMode', val =&gt; localStorage.setItem('darkMode', val))">
+<head>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="utf-8"/>
+<meta content="white" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="black" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>1.2 - What is git? | The Programming Reference Book</title>
+<meta content="1.2 - What is git? | The Programming Reference Book" property="og:title"/>
+<meta content="1.2 - What is git? | The Programming Reference Book" name="twitter:title"/>
+<link href="../_static/pygments.css?v=e72c8e07" rel="stylesheet" type="text/css"/>
+<link href="../_static/theme.css?v=42baaae4" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="icon"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="1_3_github.html" rel="next" title="1.3 - GitHub"/>
+<link href="1_1_version_control.html" rel="prev" title="1.1 - Version Control"/>
+<script>
+    <!-- Prevent Flash of wrong theme -->
+      const userPreference = localStorage.getItem('darkMode');
+      let mode;
+      if (userPreference === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        mode = 'dark';
+        document.documentElement.classList.add('dark');
+      } else {
+        mode = 'light';
+      }
+      if (!userPreference) {localStorage.setItem('darkMode', mode)}
+    </script>
+</head>
+<body :class="{ 'overflow-hidden': showSidebar }" @scroll.window="showScrollTop = pageYOffset &gt; 100" class="min-h-screen font-sans antialiased bg-background text-foreground" x-data="{ showSidebar: false, showScrollTop: false }">
+<div @click.self="showSidebar = false" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm md:hidden" x-cloak="" x-show="showSidebar"></div><div class="relative flex flex-col min-h-screen" id="page"><a class="absolute top-0 left-0 z-[100] block bg-background p-4 text-xl transition -translate-x-full opacity-0 focus:translate-x-0 focus:opacity-100" href="#content">
+      Skip to content
+    </a><header class="sticky top-0 z-40 w-full border-b shadow-sm border-border supports-backdrop-blur:bg-background/60 bg-background/95 backdrop-blur"><div class="container flex items-center h-14">
+<div class="hidden mr-4 md:flex">
+<a class="flex items-center mr-6" href="../index.html">
+<img alt="Logo" class="mr-2 hidden dark:block" height="24" src="../_static/favicon.png" width="24"/>
+<img alt="Logo" class="mr-2 dark:hidden" height="24" src="../_static/favicon.png" width="24"/><span class="hidden font-bold sm:inline-block text-clip whitespace-nowrap">The Programming Reference Book</span>
+</a></div><button @click="showSidebar = true" class="inline-flex items-center justify-center h-10 px-0 py-2 mr-2 text-base font-medium transition-colors rounded-md hover:text-accent-foreground hover:bg-transparent md:hidden" type="button">
+<svg aria-hidden="true" fill="currentColor" height="24" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M152.587 825.087q-19.152 0-32.326-13.174t-13.174-32.326q0-19.152 13.174-32.326t32.326-13.174h440q19.152 0 32.326 13.174t13.174 32.326q0 19.152-13.174 32.326t-32.326 13.174h-440Zm0-203.587q-19.152 0-32.326-13.174T107.087 576q0-19.152 13.174-32.326t32.326-13.174h320q19.152 0 32.326 13.174T518.087 576q0 19.152-13.174 32.326T472.587 621.5h-320Zm0-203.587q-19.152 0-32.326-13.174t-13.174-32.326q0-19.152 13.174-32.326t32.326-13.174h440q19.152 0 32.326 13.174t13.174 32.326q0 19.152-13.174 32.326t-32.326 13.174h-440ZM708.913 576l112.174 112.174q12.674 12.674 12.674 31.826t-12.674 31.826Q808.413 764.5 789.261 764.5t-31.826-12.674l-144-144Q600 594.391 600 576t13.435-31.826l144-144q12.674-12.674 31.826-12.674t31.826 12.674q12.674 12.674 12.674 31.826t-12.674 31.826L708.913 576Z"></path>
+</svg>
+<span class="sr-only">Toggle navigation menu</span>
+</button>
+<div class="flex items-center justify-between flex-1 space-x-2 sm:space-x-4 md:justify-end">
+<div class="flex-1 w-full md:w-auto md:flex-none"><form @keydown.k.window.meta="$refs.search.focus()" action="../search.html" class="relative flex items-center group" id="searchbox" method="get">
+<input aria-label="Search the docs" class="inline-flex items-center font-medium transition-colors bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background border border-input hover:bg-accent focus:bg-accent hover:text-accent-foreground focus:text-accent-foreground hover:placeholder-accent-foreground py-2 px-4 relative h-9 w-full justify-start rounded-[0.5rem] text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64" id="search-input" name="q" placeholder="Search ..." type="search" x-ref="search"/>
+<kbd class="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none text-muted-foreground items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex group-hover:bg-accent group-hover:text-accent-foreground">
+<span class="text-xs">⌘</span>
+    K
+  </kbd>
+</form>
+</div>
+<nav class="flex items-center space-x-1">
+<button @click="darkMode = darkMode === 'light' ? 'dark' : 'light'" aria-label="Color theme switcher" class="relative inline-flex items-center justify-center px-0 text-sm font-medium transition-colors rounded-md hover:bg-accent hover:text-accent-foreground h-9 w-9" type="button">
+<svg class="absolute transition-all scale-100 rotate-0 dark:-rotate-90 dark:scale-0" fill="currentColor" height="24" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M480 685q45.456 0 77.228-31.772Q589 621.456 589 576q0-45.456-31.772-77.228Q525.456 467 480 467q-45.456 0-77.228 31.772Q371 530.544 371 576q0 45.456 31.772 77.228Q434.544 685 480 685Zm0 91q-83 0-141.5-58.5T280 576q0-83 58.5-141.5T480 376q83 0 141.5 58.5T680 576q0 83-58.5 141.5T480 776ZM80 621.5q-19.152 0-32.326-13.174T34.5 576q0-19.152 13.174-32.326T80 530.5h80q19.152 0 32.326 13.174T205.5 576q0 19.152-13.174 32.326T160 621.5H80Zm720 0q-19.152 0-32.326-13.174T754.5 576q0-19.152 13.174-32.326T800 530.5h80q19.152 0 32.326 13.174T925.5 576q0 19.152-13.174 32.326T880 621.5h-80Zm-320-320q-19.152 0-32.326-13.174T434.5 256v-80q0-19.152 13.174-32.326T480 130.5q19.152 0 32.326 13.174T525.5 176v80q0 19.152-13.174 32.326T480 301.5Zm0 720q-19.152 0-32.326-13.17Q434.5 995.152 434.5 976v-80q0-19.152 13.174-32.326T480 850.5q19.152 0 32.326 13.174T525.5 896v80q0 19.152-13.174 32.33-13.174 13.17-32.326 13.17ZM222.174 382.065l-43-42Q165.5 327.391 166 308.239t13.174-33.065q13.435-13.674 32.587-13.674t32.065 13.674l42.239 43q12.674 13.435 12.555 31.706-.12 18.272-12.555 31.946-12.674 13.674-31.445 13.413-18.772-.261-32.446-13.174Zm494 494.761-42.239-43q-12.674-13.435-12.674-32.087t12.674-31.565Q686.609 756.5 705.38 757q18.772.5 32.446 13.174l43 41.761Q794.5 824.609 794 843.761t-13.174 33.065Q767.391 890.5 748.239 890.5t-32.065-13.674Zm-42-494.761Q660.5 369.391 661 350.62q.5-18.772 13.174-32.446l41.761-43Q728.609 261.5 747.761 262t33.065 13.174q13.674 13.435 13.674 32.587t-13.674 32.065l-43 42.239q-13.435 12.674-31.706 12.555-18.272-.12-31.946-12.555Zm-495 494.761Q165.5 863.391 165.5 844.239t13.674-32.065l43-42.239q13.435-12.674 32.087-12.674t31.565 12.674Q299.5 782.609 299 801.38q-.5 18.772-13.174 32.446l-41.761 43Q231.391 890.5 212.239 890t-33.065-13.174ZM480 576Z"></path>
+</svg>
+<svg class="absolute transition-all scale-0 rotate-90 dark:rotate-0 dark:scale-100" fill="currentColor" height="24" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M480 936q-151 0-255.5-104.5T120 576q0-138 90-239.5T440 218q25-3 39 18t-1 44q-17 26-25.5 55t-8.5 61q0 90 63 153t153 63q31 0 61.5-9t54.5-25q21-14 43-1.5t19 39.5q-14 138-117.5 229T480 936Zm0-80q88 0 158-48.5T740 681q-20 5-40 8t-40 3q-123 0-209.5-86.5T364 396q0-20 3-40t8-40q-78 32-126.5 102T200 576q0 116 82 198t198 82Zm-10-270Z"></path>
+</svg>
+</button>
+</nav>
+</div>
+</div>
+</header>
+<div class="flex-1"><div class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10"><aside :aria-hidden="!showSidebar" :class="{ 'translate-x-0': showSidebar }" class="fixed inset-y-0 left-0 md:top-14 z-50 md:z-30 bg-background md:bg-transparent transition-all duration-100 -translate-x-full md:translate-x-0 ml-0 p-6 md:p-0 md:-ml-2 md:h-[calc(100vh-3.5rem)] w-5/6 md:w-full shrink-0 overflow-y-auto border-r border-border md:sticky" id="left-sidebar">
+<a class="!justify-start text-sm md:!hidden bg-background" href="../index.html">
+<img alt="Logo" class="mr-2 hidden dark:block" height="16" src="../_static/favicon.png" width="16"/>
+<img alt="Logo" class="mr-2 dark:hidden" height="16" src="../_static/favicon.png" width="16"/><span class="font-bold text-clip whitespace-nowrap">The Programming Reference Book</span>
+</a>
+<div class="relative overflow-hidden md:overflow-auto my-4 md:my-0 h-[calc(100vh-8rem)] md:h-auto">
+<div class="overflow-y-auto h-full w-full relative pr-6"><nav class="table w-full min-w-full my-6 lg:my-8">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../why_learn_programming.html">Why Learn Programming?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1 - Git &amp; Version Control</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_1_version_control.html">1.1 - Version Control</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1.2 - What is <code class="docutils literal notranslate"><span class="pre">git</span></code>?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_3_github.html">1.3 - GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_4_merges.html">1.4 - Merges</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2 - Intro to FRC Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro_frc/2_1_wpilib.html">2.1 - WPILib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro_frc/2_2_why_organize.html">2.2 - Why Organize Code?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro_frc/2_3_subsystems.html">2.3 - Subsystems</a></li>
+<li class="toctree-l1" x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="../intro_frc/commands/index.html">2.4 - Commands<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li class="toctree-l2"><a class="reference internal" href="../intro_frc/commands/2_4_1_structure.html">2.4.1 - Command structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_frc/commands/2_4_2_interrupts.html">2.4.2 - Interrupting Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_frc/commands/2_4_3_subclassing.html">2.4.3 - Subclassing Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_frc/commands/2_4_4_compositions.html">2.4.4 - Command Compositions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_frc/commands/2_4_5_factories.html">2.4.5 - Command Factories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_frc/commands/2_4_6_decorators.html">2.4.6 - Command Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_frc/commands/2_4_7_inline.html">2.4.7 - Inline Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_frc/commands/2_4_8_default.html">2.4.8 - Default Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_frc/commands/2_4_9_proxy.html">2.4.9 - Proxy Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intro_frc/2_5_triggers.html">2.5 - Triggers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro_frc/2_6_scheduler.html">2.6 - Command Scheduler</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3 - Advanced FRC Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/3_0_about.html">3.0 - Guide to the Advanced Section</a></li>
+<li class="toctree-l1" x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="../advanced/structure/index.html">3.1 - Program Structure<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li class="toctree-l2"><a class="reference internal" href="../advanced/structure/3_1_1_subsystems.html">3.1.1 - Subsystems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/structure/3_1_2_superstructure.html">3.1.2 - Superstructures and States</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/structure/3_1_3_binders.html">3.1.3 - Binders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/structure/3_1_4_state_theory.html">3.1.4 - State, Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/structure/3_1_5_state_application.html">3.1.5 - State, Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/3_2_status_signals.html">3.2 - Tips for CTRE Status Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/3_3_logging.html">3.3 - Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/3_4_localization.html">3.4 - Localization</a></li>
+<li class="toctree-l1" x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="../advanced/debugging/index.html">3.5 - Debugging<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li class="toctree-l2"><a class="reference internal" href="../advanced/debugging/3_5_1_causes.html">3.5.1 - What Causes Buggy Code?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/debugging/3_5_2_identify.html">3.5.2 - Identify the Issue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/debugging/3_5_3_correct.html">3.5.3 - Find and Correct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/debugging/3_5_4_tips.html">3.5.4 - Debugging Tips &amp; Tricks</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4 - Programming Writeups</span></p>
+<ul>
+<li class="toctree-l1" x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="../writeups/index.html">4 - Writeups<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul class="simple" x-show="expanded">
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+<button @click="showSidebar = false" class="absolute md:hidden right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100" type="button">
+<svg class="h-4 w-4" fill="currentColor" height="24" stroke="none" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M480 632 284 828q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536 576l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480 632Z"></path>
+</svg>
+</button>
+</aside>
+<main class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
+<div class="w-full min-w-0 mx-auto">
+<nav aria-label="breadcrumbs" class="flex items-center mb-4 space-x-1 text-sm text-muted-foreground">
+<a class="overflow-hidden text-ellipsis whitespace-nowrap hover:text-foreground" href="../index.html">
+<span class="hidden md:inline">The Programming Reference Book</span>
+<svg aria-label="Home" class="md:hidden" fill="currentColor" height="18" stroke="none" viewbox="0 96 960 960" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M240 856h120V616h240v240h120V496L480 316 240 496v360Zm-80 80V456l320-240 320 240v480H520V696h-80v240H160Zm320-350Z"></path>
+</svg>
+</a>
+<div class="mr-1">.</div><span aria-current="page" class="font-medium text-foreground overflow-hidden text-ellipsis whitespace-nowrap">1.2 - What is <code class="docutils literal notranslate"><span class="pre">git</span></code>?</span>
+</nav>
+<div id="content" role="main">
+<section id="what-is-git">
+<h1>1.2 - What is <code class="docutils literal notranslate"><span class="pre">git</span></code>?<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#what-is-git"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></h1>
+<p>So far, we’ve defined some abstract concept of what a <strong>version control</strong>
+system needs to do (see <a class="reference internal" href="1_1_version_control.html"><span class="doc">1.1 - Version Control</span></a>). But these are just
+requirements, not an actual piece of software meeting these needs!</p>
+<p>There are a few tools that all offer these features. But the most popular one -
+and what we use - is called <code class="docutils literal notranslate"><span class="pre">git</span></code>.</p>
+<section id="using-git">
+<h2>Using Git<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#using-git" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#using-git'"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></h2>
+<p>Let’s walk through a simple project to show the fundamentals of how <code class="docutils literal notranslate"><span class="pre">git</span></code>
+works.</p>
+<p>Make sure that VS Code and Git are installed on your machine (see
+<a class="reference internal" href="../get_started.html"><span class="doc">Getting Started</span></a>).</p>
+<section id="open-vs-code">
+<h3>Open VS Code<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#open-vs-code" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#open-vs-code'"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></h3>
+<p>Open the app called <strong>WPILib VS Code</strong> (the version may also be in the name).</p>
+<p>You should see something that looks like this:</p>
+<figure class="align-default" id="id1">
+<img alt="../_images/vs_code_open.png" src="../_images/vs_code_open.png"/>
+<figcaption>
+<p><span class="caption-text">Don’t worry if you don’t see the explorer open on the left.</span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#id1"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></p>
+</figcaption>
+</figure>
+<p>We’ll cover the features of VS Code in a further page, but for now, just follow
+along.</p>
+</section>
+<section id="open-a-new-project">
+<h3>Open a new project<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#open-a-new-project" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#open-a-new-project'"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></h3>
+<p>We need to create somewhere to store our repository. Repositories are just
+folders tracked by <code class="docutils literal notranslate"><span class="pre">git</span></code>, so we just need to create a new folder to get
+started in.</p>
+<p>Press <code class="docutils literal notranslate"><span class="pre">File</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Folder</span></code> to open a new folder. You can put this
+wherever, but what’s important is that you make a <em>new</em> folder. For the rest of
+this guide, I’ll create a folder called <code class="docutils literal notranslate"><span class="pre">example</span></code>.</p>
+<p>Now VS Code should look like this:</p>
+<img alt="../_images/vs_code_example.png" src="../_images/vs_code_example.png"/>
+<p>Now we see the word <code class="docutils literal notranslate"><span class="pre">EXAMPLE</span></code> in the explorer window. This lets us know we’ve
+opened the right project.</p>
+</section>
+<section id="initialize-git-in-our-project">
+<h3>Initialize <code class="docutils literal notranslate"><span class="pre">git</span></code> in our project<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#initialize-git-in-our-project" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#initialize-git-in-our-project'"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></h3>
+<p>In the activity bar (the leftmost bar), select the icon that looks like three
+dots connected with two lines. That’s a icon for version control. Sometimes
+version control will be referred to as “source control”, but they mean the same
+thing.</p>
+<img alt="../_images/vs_code_vc.png" src="../_images/vs_code_vc.png"/>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">Initialize</span> <span class="pre">Repository</span></code> button to start a <code class="docutils literal notranslate"><span class="pre">git</span></code> repository in
+the selected folder.</p>
+<p>Now you should see:</p>
+<img alt="../_images/vs_code_git_init.png" src="../_images/vs_code_git_init.png"/>
+<p>Notice how, in the bottom left of the screen, VS Code now says <code class="docutils literal notranslate"><span class="pre">main</span></code>. This
+is the currently active <strong>branch</strong> that we’re making changes on. Right now,
+there’s only one branch. But we can change that later.</p>
+</section>
+<section id="track-a-new-file">
+<h3>Track a new file<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#track-a-new-file" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#track-a-new-file'"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></h3>
+<p>If you return to the explorer menu, we can start creating new files. Press the
+icon of a page with a <code class="docutils literal notranslate"><span class="pre">+</span></code> sign to create a new file. Let’s begin with a file
+called <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code>.</p>
+<img alt="../_images/vs_code_new_file.png" src="../_images/vs_code_new_file.png"/>
+<div class="admonition-what-is-txt admonition">
+<p class="admonition-title">What is <code class="docutils literal notranslate"><span class="pre">.txt</span></code>?</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.txt</span></code> part of <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> is a <strong>file extension</strong> and is used to
+tell programs like VS Code what kind of a file this is. <code class="docutils literal notranslate"><span class="pre">txt</span></code> is an
+indicator that this is a plain text file.</p>
+</div>
+<p>Press enter to create the file, and it should show up in the explorer menu as
+green.</p>
+<img alt="../_images/vs_code_git_color.png" src="../_images/vs_code_git_color.png"/>
+<p>VS Code works with <code class="docutils literal notranslate"><span class="pre">git</span></code> to get status information on all new files. Green
+means that the file is “untracked”, or new to <code class="docutils literal notranslate"><span class="pre">git</span></code>. White means that there
+is no change to the file since the last time <code class="docutils literal notranslate"><span class="pre">git</span></code> saw it. Orange means that
+there has been some modification to the file, but the file itself is not new.</p>
+<p>Let’s put some content in our file. Here’s what we could write:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">hello.txt</span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#id2"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">Hello world! The phrase "Hello, World!" is a common saying among
+</span><span id="line-2">programmers. Lots of introductory programming lessons teach the student how
+</span><span id="line-3">to write a program that says "Hello, World!".
+</span><span id="line-4">
+</span><span id="line-5">The saying was popularized in the book "The C Programming Language" in 1978,
+</span><span id="line-6">and has stuck around to this day.
+</span></code></pre></div>
+</div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">Ctrl-S</span></code> (or <code class="docutils literal notranslate"><span class="pre">Command-S</span></code> on MacOS) to save the file.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can enable auto-save with <code class="docutils literal notranslate"><span class="pre">File</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Autosave</span></code>. Pressing this
+enables autosave.</p>
+</div>
+</section>
+<section id="staging-changes">
+<h3>Staging changes<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#staging-changes" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#staging-changes'"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></h3>
+<p>Now that we’re ready to take a snapshot of the repository (which, for now, is
+just one file), we can go back to the <code class="docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Control</span></code> panel in VS Code.</p>
+<p>We now see that <code class="docutils literal notranslate"><span class="pre">git</span></code> recognizes our new file and marks it with a small green
+<code class="docutils literal notranslate"><span class="pre">U</span></code>. This <code class="docutils literal notranslate"><span class="pre">U</span></code> is short for <code class="docutils literal notranslate"><span class="pre">Untracked</span></code>, and it means that we haven’t told
+<code class="docutils literal notranslate"><span class="pre">git</span></code> to track our file.</p>
+<img alt="../_images/vs_code_unstaged_changes.png" src="../_images/vs_code_unstaged_changes.png"/>
+<div class="admonition-what-do-those-icons-mean admonition">
+<p class="admonition-title">What do those icons mean?</p>
+<p>Reading from left to right, the first icon after the file name looks like a
+page with an arrow coming around it. This icon means <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">file</span></code> and if we
+press it, it opens the file for us to edit.</p>
+<p>The next icon is an arrow pointing to the left. This is the button to
+<code class="docutils literal notranslate"><span class="pre">Discard</span> <span class="pre">Changes</span></code>. This throws away all changes to a file since the last
+“snapshow” or commit.</p>
+<p>The last button is a <code class="docutils literal notranslate"><span class="pre">+</span></code> icon. This button tells <code class="docutils literal notranslate"><span class="pre">git</span></code> to <strong>stage</strong>
+these changes. We’ll cover what staging a file does in just a moment.</p>
+</div>
+<p>To tell <code class="docutils literal notranslate"><span class="pre">git</span></code> to start tracking our file, we only need to press the <code class="docutils literal notranslate"><span class="pre">+</span></code>
+button. This <strong>stages</strong> our file, and tells <code class="docutils literal notranslate"><span class="pre">git</span></code> to do two things:</p>
+<ol class="arabic simple">
+<li><p>Start tracking the file if it’s not already. This means that <code class="docutils literal notranslate"><span class="pre">git</span></code> will
+now monitor this file for changes since the last commit.</p></li>
+<li><p>Mark the changes in a tracked file as “ready for commit”. With <code class="docutils literal notranslate"><span class="pre">git</span></code>, you
+don’t just commit <em>all</em> changes. You have to explicitly tell <code class="docutils literal notranslate"><span class="pre">git</span></code> which
+file changes are good to be saved. This gives you more control over what
+gets committed and saved - and what doesn’t.</p></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you want to perform these file specific actions on the entire
+repository (discard all changes or stage all changes) those options are
+available in the top of the <code class="docutils literal notranslate"><span class="pre">Changes</span></code> bar as well.</p>
+</div>
+<p>Once we <strong>stage</strong> our changes, we should see this:</p>
+<img alt="../_images/vs_code_staged_changes.png" src="../_images/vs_code_staged_changes.png"/>
+<p>Notice that the file we staged is now in a different section of the <code class="docutils literal notranslate"><span class="pre">Source</span>
+<span class="pre">Control</span></code> panel. It moved from <code class="docutils literal notranslate"><span class="pre">Changes</span></code> to <code class="docutils literal notranslate"><span class="pre">Staged</span> <span class="pre">Changes</span></code>. This is an
+indication to us that the file has really been staged.</p>
+<p>The letter also changed from <code class="docutils literal notranslate"><span class="pre">U</span></code> to <code class="docutils literal notranslate"><span class="pre">A</span></code>. Hovering over this tells us
+<code class="docutils literal notranslate"><span class="pre">Index</span> <span class="pre">Added</span></code>. This means that this is file is added to the files tracked by
+<code class="docutils literal notranslate"><span class="pre">git</span></code>.</p>
+<p>We also can press the <code class="docutils literal notranslate"><span class="pre">-</span></code> button to <strong>unstage</strong> these changes. This keeps the
+changes, but removes them from the group of changes that are staged.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can stage changes in a file, then make changes in that same file.
+Only the changes present when you last staged the file will be in the staged
+section, the rest will be unstaged.</p>
+</div>
+<div class="admonition-why-not-track-all-files admonition">
+<p class="admonition-title">Why not track all files?</p>
+<p>Considering the power of <code class="docutils literal notranslate"><span class="pre">git</span></code>, it seems like it’s reasonable to always
+track everything. However, that’s not the case. Sometimes, there are files
+that we <em>don’t</em> want <code class="docutils literal notranslate"><span class="pre">git</span></code> to track, that either don’t contain our source
+code, or have sensitive information like passwords.</p>
+</div>
+</section>
+<section id="committing-changes">
+<h3>Committing changes<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#committing-changes" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#committing-changes'"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></h3>
+<p>Once we’re ready for our changes to be saved forever, we can <strong>commit</strong> them.
+When we make a commit, we tell <code class="docutils literal notranslate"><span class="pre">git</span></code> to take a snapshot of all <em>staged</em>
+changes, and save them with a commit message.</p>
+<p>Let’s do that now.</p>
+<p>Above the box called <code class="docutils literal notranslate"><span class="pre">Commit</span></code>, there is a space for us to enter the message
+of our commit. There are a few general guidelines on how to make a good commit message:</p>
+<ul class="simple">
+<li><p>The changes should be reflected in the name. Don’t pick a name that doesn’t
+have any information, like <code class="docutils literal notranslate"><span class="pre">asdf</span></code> or <code class="docutils literal notranslate"><span class="pre">hi</span> <span class="pre">mom</span></code>.</p></li>
+<li><p>The changes don’t need to include information like the date, time, or author.
+Git stores that information automatically.</p></li>
+<li><p>Normally, commit messages should be short and use active voice. Use verbs,
+not nouns. <code class="docutils literal notranslate"><span class="pre">Modify</span> <span class="pre">file.txt</span></code> is better than <code class="docutils literal notranslate"><span class="pre">file.txt</span> <span class="pre">modifications</span></code>.</p></li>
+</ul>
+<p>As an example, this can be our commit message:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Commit message</span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#id3"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">Create hello.txt
+</span></code></pre></div>
+</div>
+</div>
+<p>Press the <code class="docutils literal notranslate"><span class="pre">Commit</span></code> button to take a snapshot of all staged changes. Now, VS
+Code should look like this:</p>
+<img alt="../_images/vs_code_committed_changes.png" src="../_images/vs_code_committed_changes.png"/>
+<p>We’ve now got a button to <code class="docutils literal notranslate"><span class="pre">Publish</span> <span class="pre">Branch</span></code>. We get into that in the next
+page.</p>
+</section>
+<section id="modifying-files">
+<h3>Modifying Files<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#modifying-files" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#modifying-files'"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></h3>
+<p>Let’s say we want to modify an already tracked file. This is really easy.</p>
+<p>Let’s add some extra information to <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">hello.txt</span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#id4"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><mark>--------------------------------
+</mark></span><span id="line-2"><mark>  The origins of "Hello World"
+</mark></span><span id="line-3"><mark>--------------------------------
+</mark></span><span id="line-4"><mark>
+</mark></span><span id="line-5">Hello world! The phrase "Hello, World!" is a common saying among
+</span><span id="line-6">programmers. Lots of introductory programming lessons teach the student how
+</span><span id="line-7">to write a program that says "Hello, World!".
+</span><span id="line-8">
+</span><span id="line-9">The saying was popularized in the book "The C Programming Language" in 1978,
+</span><span id="line-10">and has stuck around to this day.
+</span></code></pre></div>
+</div>
+</div>
+<p>I’ve highlighted the lines we added.</p>
+<p>Now, notice the filename now appears in orange/yellow, and we see the changes
+are visible in the <code class="docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Control</span></code> panel in the activity bar.</p>
+<img alt="../_images/vs_code_unstaged_modifications.png" src="../_images/vs_code_unstaged_modifications.png"/>
+<p>Also note that the letter <code class="docutils literal notranslate"><span class="pre">M</span></code> is next to the file name under the <code class="docutils literal notranslate"><span class="pre">Changes</span></code>
+section. This indicates that this is a change in a file that <code class="docutils literal notranslate"><span class="pre">git</span></code> tracked.</p>
+<p>Let’s stage the file by pressing <code class="docutils literal notranslate"><span class="pre">+</span></code>.</p>
+<img alt="../_images/vs_code_staged_modifications.png" src="../_images/vs_code_staged_modifications.png"/>
+<p>And then we can commit our changes. Our message could be <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">title</span> <span class="pre">to</span>
+<span class="pre">hello.txt</span></code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The fastest programmers know keyboard shortcuts. You can find a
+complete list by pressing <code class="docutils literal notranslate"><span class="pre">Help</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Keyboard</span> <span class="pre">Shortcuts</span> <span class="pre">Reference</span></code>.</p>
+</div>
+<img alt="../_images/vs_code_committed_modifications.png" src="../_images/vs_code_committed_modifications.png"/>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>To get the most out of this book, try repeating the steps we’ve done
+already with your own ideas. Add a new file, <code class="docutils literal notranslate"><span class="pre">aboutme.txt</span></code> that contains
+your name, high school, and favorite color and food. Try to follow the steps
+we’ve done already.</p>
+</div>
+</section>
+</section>
+<section id="expanding-our-project">
+<h2>Expanding our project<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#expanding-our-project" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#expanding-our-project'"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></h2>
+<p>This has been a very simple project. But now, let’s consider adding another
+file: <code class="docutils literal notranslate"><span class="pre">goodbye.txt</span></code>.</p>
+<p>We could do what we’ve been doing - adding new data to a file, staging, and
+committing our changes. However, it’s normally good practice to make
+modifications in a separate <strong>branch</strong> and then merge in the changes when we’re
+happy with them.</p>
+<p>This is especially important when writing code, because we want to make sure
+that our <code class="docutils literal notranslate"><span class="pre">main</span></code> branch is safe and stable. If we have experimental features,
+we don’t want to add those changes to <code class="docutils literal notranslate"><span class="pre">main</span></code> until we’re sure they work.</p>
+<p>So let’s create a new branch to make some modifications on, then merge it into
+the original branch (<code class="docutils literal notranslate"><span class="pre">main</span></code>) when we’re happy with what we’ve done.</p>
+<section id="create-a-new-branch">
+<h3>Create a new branch<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#create-a-new-branch" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#create-a-new-branch'"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></h3>
+<p>We need to create a new branch before we commit any changes. Commits always
+happen on the current branch, so we need to switch <em>first</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We <em>could</em> make our changes, and <em>then</em> switch branches, but that’s
+not the best practice. It’s easy to forget that last step when we’re writing
+a lot of code.</p>
+</div>
+<p>To create a new branch, we can press the text at the bottom left of the screen
+that currently reads <code class="docutils literal notranslate"><span class="pre">main</span></code>. This tells us what branch we’re on right now.</p>
+<img alt="../_images/vs_code_branches.png" src="../_images/vs_code_branches.png"/>
+<p>We’ve got a few options, but for now we want to select the first option: <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">new</span> <span class="pre">branch</span></code>.</p>
+<img alt="../_images/vs_code_create_new_branch.png" src="../_images/vs_code_create_new_branch.png"/>
+<p>We now enter the name of our new branch. Branch names should be short and make
+sense as to what features or changes we’re going to make in them. For now,
+<code class="docutils literal notranslate"><span class="pre">goodbye</span></code> is a good name.</p>
+<p>Press enter, and we see little change on the dashboard:</p>
+<figure class="align-default" id="id5">
+<img alt="../_images/vs_code_new_branch.png" src="../_images/vs_code_new_branch.png"/>
+<figcaption>
+<p><span class="caption-text">Notice that the branch at the bottom left has changes from <code class="docutils literal notranslate"><span class="pre">main</span></code> to <code class="docutils literal notranslate"><span class="pre">goodbye</span></code>.</span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#id5"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></p>
+</figcaption>
+</figure>
+<p>Let’s go through the process of adding a new file. Navigate to the Explorer
+through the action panel, and create a new file, just like we did with
+<code class="docutils literal notranslate"><span class="pre">hello.txt</span></code>. Call this new file <code class="docutils literal notranslate"><span class="pre">goodbye.txt</span></code>.</p>
+<figure class="align-default" id="id6">
+<img alt="../_images/vs_code_another_file.png" src="../_images/vs_code_another_file.png"/>
+<figcaption>
+<p><span class="caption-text">Notice that, just like <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> at first, <code class="docutils literal notranslate"><span class="pre">git</span></code> doesn’t track our
+file just yet. It’s marked green with a <code class="docutils literal notranslate"><span class="pre">U</span></code> to show it’s untracked.</span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#id6"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></p>
+</figcaption>
+</figure>
+<p>We can enter some text in this file, like before:</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">goodbye.txt</span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#id7"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">Goodbye! See you later!
+</span></code></pre></div>
+</div>
+</div>
+<p>Like before, we can save the file, stage it, and add a commit message, <code class="docutils literal notranslate"><span class="pre">Create</span>
+<span class="pre">goodbye.txt</span></code>. Let’s commit that on this branch.</p>
+<img alt="../_images/vs_code_commit_goodbye.png" src="../_images/vs_code_commit_goodbye.png"/>
+<p>Now we need to <strong>merge</strong> our changes from the <code class="docutils literal notranslate"><span class="pre">goodbye</span></code> branch into the
+<code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p>
+<p>Click <code class="docutils literal notranslate"><span class="pre">goodbye</span></code> in the bottom left and this time, select <code class="docutils literal notranslate"><span class="pre">main</span></code> to switch
+branches:</p>
+<img alt="../_images/vs_code_branch_select.png" src="../_images/vs_code_branch_select.png"/>
+<p>Now that we’re on <code class="docutils literal notranslate"><span class="pre">main</span></code>, take a close look at the <code class="docutils literal notranslate"><span class="pre">git</span></code> history:</p>
+<img alt="../_images/vs_code_git_history.png" src="../_images/vs_code_git_history.png"/>
+<p>Notice how <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">goodbye.txt</span></code> isn’t here. This is because we only see
+commits for the <strong>head</strong> of the branch. The first two commits are here because
+they happened on this branch. But <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">goodbye.txt</span></code> isn’t here because
+that commit didn’t happen on this branch. Therefore, <code class="docutils literal notranslate"><span class="pre">goodbye.txt</span></code> can’t be
+found in the file explorer. Try it! It’s gone!</p>
+<div class="admonition-commit-history-back-on-goodbye admonition">
+<p class="admonition-title">Commit history back on <code class="docutils literal notranslate"><span class="pre">goodbye</span></code></p>
+<p>If you want, switch back to <code class="docutils literal notranslate"><span class="pre">goodbye</span></code> and take a look at the commit
+history there. You’ll notice the first commits we made before switchign
+branches are there, too. But we didn’t create those commits on the
+<code class="docutils literal notranslate"><span class="pre">goodbye</span></code> branch.</p>
+<p>This occurs because when we split off onto the <code class="docutils literal notranslate"><span class="pre">goodbye</span></code> branch, we needed
+some point to “branch” from. That is always the current <strong>head</strong> (most
+recent commit on the active branch). So when we created the <code class="docutils literal notranslate"><span class="pre">goodbye</span></code>
+branch, the current <strong>head</strong> was used as the starting point.</p>
+<p>If we had created the <code class="docutils literal notranslate"><span class="pre">goodbye</span></code> branch before we made those commits, back
+when we had an empty folder, those commits wouldn’t be on the <code class="docutils literal notranslate"><span class="pre">goodbye</span></code>
+branch.</p>
+</div>
+<p>If you still have <code class="docutils literal notranslate"><span class="pre">goodbye.txt</span></code> open, you will see something like this,
+indicating that the file is no longer present:</p>
+<figure class="align-default" id="id8">
+<img alt="../_images/vs_code_missing_file.png" src="../_images/vs_code_missing_file.png"/>
+<figcaption>
+<p><span class="caption-text">The file <code class="docutils literal notranslate"><span class="pre">goodbye.txt</span></code> no longer exists, so it’s crossed out in red. We
+can close the tab by pressing the <code class="docutils literal notranslate"><span class="pre">X</span></code> next to the filename.</span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#id8"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></p>
+</figcaption>
+</figure>
+<p>But let’s say we’re happy with the changes on the <code class="docutils literal notranslate"><span class="pre">goodbye</span></code> branch, and we
+want those to be combined with what we’ve got on <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
+</section>
+<section id="merging-branches">
+<h3>Merging branches<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#merging-branches" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#merging-branches'"><svg height="1em" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Merging branches can become very tricky when there are
+conflicting changes on each branch. This example doesn’t address it, but a
+page in the future will: <a class="reference internal" href="1_4_merges.html"><span class="doc">1.4 - Merges</span></a>.</p>
+</div>
+<p>If we want to <strong>merge</strong> changes from <code class="docutils literal notranslate"><span class="pre">goodbye</span></code> into <code class="docutils literal notranslate"><span class="pre">main</span></code>, that means that
+we want the changes that we made on <code class="docutils literal notranslate"><span class="pre">goodbye</span></code> to be copied to <code class="docutils literal notranslate"><span class="pre">main</span></code> as
+well, so that <code class="docutils literal notranslate"><span class="pre">main</span></code> has the desired changes applied.</p>
+<p>Let’s make sure that we’re on the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch by looking in the bottom left
+of VS Code. If it says <code class="docutils literal notranslate"><span class="pre">main</span></code>, we’re good! If it doesn’t follow the steps
+listed above to switch to <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
+<p>Now we need to open the <code class="docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Control</span></code> panel in VS Code.</p>
+<p>Next to the <code class="docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Control</span></code> label, there are three dots.</p>
+<p>Select the dots, then <code class="docutils literal notranslate"><span class="pre">Branch</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Merge</span></code>.</p>
+<img alt="../_images/vs_code_merge_button.png" src="../_images/vs_code_merge_button.png"/>
+<p>Now we need to select the appropriate branch to merge from. This is the branch
+that we’re going to pull changes from.</p>
+<p>Let’s select <code class="docutils literal notranslate"><span class="pre">goodbye</span></code>.</p>
+<p>The merge happens automatically, and we get all changes from the <code class="docutils literal notranslate"><span class="pre">goodbye</span></code>
+branch on <code class="docutils literal notranslate"><span class="pre">main</span></code> now!</p>
+<p>Notice how, in the commit history, we see <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">goodbye.txt</span></code>. The commit was carried over!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can merge commits that don’t just create files, too. If you
+modify a file on another branch and commit those changes, those commits will
+be carried over as well. <em>All</em> commits from a branch are copied over upon a merge.</p>
+</div>
+</section>
+</section>
+</section>
+</div><div class="flex justify-between items-center pt-6 mt-12 border-t border-border gap-4">
+<div class="mr-auto">
+<a class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-input hover:bg-accent hover:text-accent-foreground py-2 px-4" href="1_1_version_control.html">
+<svg class="mr-2 h-4 w-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
+        1.1 - Version Control
+      </a>
+</div>
+<div class="ml-auto">
+<a class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-input hover:bg-accent hover:text-accent-foreground py-2 px-4" href="1_3_github.html">
+        1.3 - GitHub
+        <svg class="ml-2 h-4 w-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</a>
+</div>
+</div></div><aside class="hidden text-sm xl:block" id="right-sidebar">
+<div class="sticky top-16 -mt-10 max-h-[calc(100vh-5rem)] overflow-y-auto pt-6 space-y-2"><p class="font-medium">On this page</p>
+<ul>
+<li><a :data-current="activeSection === '#using-git'" class="reference internal" href="#using-git">Using Git</a><ul>
+<li><a :data-current="activeSection === '#open-vs-code'" class="reference internal" href="#open-vs-code">Open VS Code</a></li>
+<li><a :data-current="activeSection === '#open-a-new-project'" class="reference internal" href="#open-a-new-project">Open a new project</a></li>
+<li><a :data-current="activeSection === '#initialize-git-in-our-project'" class="reference internal" href="#initialize-git-in-our-project">Initialize <code class="docutils literal notranslate"><span class="pre">git</span></code> in our project</a></li>
+<li><a :data-current="activeSection === '#track-a-new-file'" class="reference internal" href="#track-a-new-file">Track a new file</a></li>
+<li><a :data-current="activeSection === '#staging-changes'" class="reference internal" href="#staging-changes">Staging changes</a></li>
+<li><a :data-current="activeSection === '#committing-changes'" class="reference internal" href="#committing-changes">Committing changes</a></li>
+<li><a :data-current="activeSection === '#modifying-files'" class="reference internal" href="#modifying-files">Modifying Files</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#expanding-our-project'" class="reference internal" href="#expanding-our-project">Expanding our project</a><ul>
+<li><a :data-current="activeSection === '#create-a-new-branch'" class="reference internal" href="#create-a-new-branch">Create a new branch</a></li>
+<li><a :data-current="activeSection === '#merging-branches'" class="reference internal" href="#merging-branches">Merging branches</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside>
+</main>
+</div>
+</div><footer class="py-6 border-t border-border md:py-0">
+<div class="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
+<div class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
+<p class="text-sm leading-loose text-center text-muted-foreground md:text-left">© 2025, Nolan Barker Built with <a class="font-medium underline underline-offset-4" href="https://www.sphinx-doc.org" rel="noreferrer">Sphinx 8.2.3</a></p>
+</div>
+</div>
+</footer>
+</div><button :class="{'opacity-0 invisible' : !showScrollTop}" @click="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 p-2 z-10 rounded-sm bg-gray-700 text-xs text-white transition-all duration-1000 hover:bg-gray-950 focus:bg-gray-950" id="scrolltop" x-cloak="">
+<svg aria-hidden="true" class="inline fill-current mb-[2px]" height="14" viewbox="0 96 960 960" width="14" xmlns="http://www.w3.org/2000/svg">
+<path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"></path>
+</svg>
+  Back to top
+</button>
+<script src="../_static/documentation_options.js?v=5929fcd5"></script>
+<script src="../_static/doctools.js?v=9bcbadda"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script defer="defer" src="../_static/theme.js?v=073f68d9"></script>
+</body>
+</html>
